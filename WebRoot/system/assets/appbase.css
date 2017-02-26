@@ -1,0 +1,152 @@
+/*use border-box*/
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; /* Firefox */
+  -webkit-box-sizing: border-box; /* Safari */
+  font-size: 62.5%;
+  /*即可此后面布局可依据以下技巧进行设置em单位
+  font-size:1.2em等于font-size:12px
+  font-size:1.4em等于font-size:14px*/
+}
+/*clearfix*/
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+* html .clearfix {
+  zoom: 1;
+} /* IE6 */
+*:first-child+html .clearfix {
+  zoom: 1;
+} /* IE7 */
+/*clearfix*/
+
+/*html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu {
+  display: block;
+}
+
+/*iframe 样式,解决 多出5 像素问题*/
+iframe {
+  border: none;
+  display: block;
+}
+/*浏览器样式重置 */
+/*美化滚动条*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #999;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+/* 图片不加边框*/
+img {
+  border: none;
+}
+
+a:focus {
+  outline: 0;
+}
+/*列表样式不需要有默认样式*/
+ul,ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/*标题不加补白*/
+h1,h2,h3,h4,h5,h6,h7 {
+  margin: 0;
+}
+/*表单元素重置 */
+/*css hack for IE*/
+input,textarea,select {
+  *font-size: 100%;
+}
+/*所有 input 取消 outline 属性*/
+input,input:focus {
+  outline: none;
+  line-height: normal;
+}
+/*input text 浏览器默认有个 padding 1px 0,这里去掉 */
+input[type=text] {
+  padding: 0;
+}
+/*去掉难看的边框,
+按扭都没有手势了*/
+input[type=button],input[type=submit],input[type=reset] {
+  border: none;
+  cursor: pointer;
+}
+/*上传文件 需加上类样式隐藏,并使用一个相对定位的元素包裹 */
+input[type=file].hidden {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+/*去掉右下角难看的三角*/
+textarea {
+  resize: none;
+}
+
+/********************全局设定***************************/
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+body a {
+  text-decoration: none;
+  color: #333;
+}
+
+body a:hover {
+  color: #23527c;
+  text-decoration: none;
+}
+/********************插件样式重置******************************/
+.chosen-container-single .chosen-single {
+  background: #fff;
+  box-shadow: none;
+  -moz-box-sizing: border-box;
+  background-color: #FFF;
+  border: 1px solid #CBD5DD;
+  border-radius: 2px;
+  cursor: text;
+  height: auto !important;
+  margin: 0;
+  min-height: 30px;
+  overflow: hidden;
+  padding: 4px 12px;
+  position: relative;
+  width: 100%
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+  background: #f1f1f1;
+  border: 1px solid #ededed;
+  border-radius: 2px;
+  box-shadow: none;
+  color: #333;
+  cursor: default;
+  line-height: 13px;
+  margin: 3px 0 3px 5px;
+  padding: 3px 20px 3px 5px;
+  position: relative
+}

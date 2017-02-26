@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <style type="text/css">
+    
+      .test{
+        padding: 15px;
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        left: 50px;
+        top: 50px;
+      }
+    </style>
+  </head> 
+  <body >
+    
+    <div class="test" >
+      <ul>
+        <li class="fore1"><a href="javascript:void(0)" onclick="SetHome(this,window.location)">设为首页</a></li> 
+        <li class="ge">|</li> 
+        <li class="fore2"><a href="javascript:void(0)" onclick="shoucang(document.title,window.location)">加入收藏</a></li> 
+        <li class="ge">|</li> 
+      </ul>
+    </div>
+    
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+
+  <script type="text/javascript">
+	// 设置为主页 
+	function SetHome(obj, vrl) {
+		try {
+			obj.style.behavior = 'url(#default#homepage)';
+			obj.setHomePage(vrl);
+		} catch (e) {
+			if (window.netscape) {
+				try {
+					netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+				} catch (e) {
+					alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]的值设置为'true',双击即可。");
+				}
+				var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
+				prefs.setCharPref('browser.startup.homepage', vrl);
+			} else {
+				alert("您的浏览器不支持，请按照下面步骤操作：1.打开浏览器设置。2.点击设置网页。3.输入：" + vrl + "点击确定。");
+			}
+		}
+	}
+	// 加入收藏 兼容360和IE6 
+	function shoucang(sTitle, sURL) {
+		try {
+			window.external.addFavorite(sURL, sTitle);
+		} catch (e) {
+			try {
+				window.sidebar.addPanel(sTitle, sURL, "");
+			} catch (e) {
+				alert("加入收藏失败，请使用Ctrl+D进行添加");
+			}
+		}
+	}
+</script>
+</body>
+</html>

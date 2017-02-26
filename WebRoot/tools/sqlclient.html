@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/fa-font-awesome.min.css" />
+    
+    <link rel="stylesheet" href="../plugins/codemirror/codemirror.css" />
+    <link rel="stylesheet" href="../plugins/codemirror/hint/show-hint.css" />
+    <link rel="stylesheet" href="../plugins/codemirror/theme/3024-night.css" />
+    <link rel="stylesheet" href="../plugins/ztree/theme/bootstrap/ztree-bootstrap.css" />
+    <link rel="stylesheet" href="../plugins/datatable/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="../plugins/contextMenu/jquery.contextMenu.min.css" />
+    <link rel="stylesheet" href="../plugins/scrolltabs/scrolltabs.css" />
+    <link rel="stylesheet" href="../plugins/chosen/chosen.min.css" />
+    
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <link rel="stylesheet" href="sqlclient/client.css" />
+    
+  </head> 
+  <body class="full-window">
+    <div class="page-wrap fit">
+      <div class="page-left">
+        <!-- 这个要支持表名搜索,字段名搜索,表名中文搜索,字段名中文搜索  -->
+        <input id="tableSearch" class="table-search" type="text" placeholder="输入表名或字段名来搜索"/>
+        <div class="button-group clearfix ztree-cmd" id="ztreeCmd">
+          <button class="btn btn-default" event="expand"    title="展开"><i class="fa fa fa-expand"></i></button>
+          <button class="btn btn-default" event="compress"  title="收起"><i class="fa fa-compress"></i></button>
+        </div>
+        <ul class="tables-list ztree" id="tablesTree"></ul>
+      </div>
+      <div class="main-wrap">
+        <div class="button-group sql-cmd" id="sqlCmd">
+          <button class="btn btn-default" ><i class="fa icon-save"></i>sql存盘</button>
+          <button class="btn btn-default" event="executorSql" ><i class="fa icon-cog"></i>执行sql</button>
+        </div>
+        
+        <div class="sql-input" id="sqlInput">
+          <textarea ></textarea>
+        </div>
+        <!-- 快速 sql  -->
+        <div class="quickly-sql" id="quicklySql">
+          <label class="quickly-label">快速sql:</label>
+          <div class="sql-content" id="sqlContent">
+            <select class="" id="sqlHead">
+              <option value="select">select</option>
+              <option value="update">update</option>
+              <option value="insert">insert</option>
+              <option value="delete">delete</option>
+            </select>
+            <span class="content code0"  >from</span>
+            <select class="select-table" id="multipleTable" >
+            </select>
+          </div>
+        </div>      
+        <!-- scroll tabs 和 结果集 -->
+        <div class="result-set-wrap" >
+          <div class="result-set-tabs" id="tableTabs"></div>
+          <div class="tables-result-set" id="tables"></div>
+        </div>  
+      </div>
+    </div>    
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    
+    <script type="text/javascript" src="../plugins/ztree/jquery.ztree.all.js"></script>
+    <script type="text/javascript" src="../plugins/layer/layer.js"></script>
+    <script type="text/javascript" src="../plugins/codemirror/codemirror.js"></script>
+    <script type="text/javascript" src="../plugins/codemirror/mode/sql/sql.js"></script>
+    <script type="text/javascript" src="../plugins/codemirror/hint/show-hint.js"></script>
+    <script type="text/javascript" src="../plugins/codemirror/hint/sql-hint.js"></script>
+    <script type="text/javascript" src="../plugins/datatable/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../plugins/contextMenu/jquery.ui.position.min.js"></script>
+    <script type="text/javascript" src="../plugins/contextMenu/jquery.contextMenu.min.js"></script>
+    <script type="text/javascript" src="../plugins/scrolltabs/scrolltabs.js"></script>
+    <script type="text/javascript" src="../plugins/chosen/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="../plugins/spin/spin.js"></script>
+    <script type="text/javascript" src="../plugins/spin/jquery.spin.js"></script>
+    
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="sqlclient/client.js"></script>
+  </body>
+</html>

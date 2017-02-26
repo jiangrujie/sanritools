@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <style type="text/css">
+      .arrow{
+        width: 0;
+        height: 0;
+        border:10px solid;
+        border-bottom-color: #06c;
+        border-top-color: #333;
+        border-left-color:red;
+        border-right-color: green; 
+      }
+      .div-arrow {
+        position: relative;
+        top: 50px;
+        left: 200px;
+        
+        width: 200px;
+        height: 100px;
+        border: 1px #808080 solid;   
+        background-color: #fff; 
+        -moz-border-radius: 10px;   
+        -webkit-border-radius: 10px;   
+        border-radius: 10px; 
+      }
+      .div-arrow:before{
+        width: 0;
+        height:0;
+        content: " ";  
+        border:15px solid transparent;
+        border-top-color: #808080;
+        position: absolute;
+        top: 100%;
+        right: 50px;
+      }
+      
+      /* content 必须要设置东西才能显示效果  */
+      /*这个 border 比上一个小 1px 然后把那条线遮盖住*/
+      .div-arrow:after{
+        content: " ";   
+        position: absolute;   
+        top: 100%;   
+        right: 51px;   
+        width: 0;   
+        height: 0;   
+        border:14px solid transparent;
+        border-top-color: #fff;
+      }
+      
+    </style>
+  </head> 
+  <body >
+    <div class="arrow"></div>
+    <div class="div-arrow"></div>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+  </body>
+</html>

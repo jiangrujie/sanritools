@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apachecommons"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/fastjson-1.1.41.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/velocity-1.7.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ojdbc14-10.2.0.2.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.12.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/javax.mail-1.5.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jsch-0.1.53.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/oro-2.0.8.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jedis-2.7.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mongo-2.5.3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/chardet.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xls/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xstream-1.1.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/randombean/validation-api-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/randombean/jpopulator-1.1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/memcachedall"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ehcache-2.9.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pinyin4j-2.5.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jbarcode-0.2.8.jar" sourcepath="E:/doc/project/jar/jbarcode0.2.8_source.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jsqlparser-0.9.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xls/jxls-core-1.0.6.jar" sourcepath="E:/repository/maven/net/sf/jxls/jxls-core/1.0.6/jxls-core-1.0.6-sources.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xls/commons-jexl-2.0.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xls/commons-digester-2.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xls/poi-3.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xls/poi-ooxml-3.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xls/poi-ooxml-schemas-3.9.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/pdf"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/temp/isp-server-1.0.0.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/htmlparser-1.6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/cxfjetty"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jaxen-1.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/getui/gexin-rp-sdk-base-4.0.0.12.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/getui/gexin-rp-sdk-http-4.0.1.7.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/getui/gexin-rp-sdk-template-4.0.0.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/getui/protobuf-java-2.5.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jsoup-1.7.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/luence/lucene-highlighter-4.10.4.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/luence/lucene-core-3.5.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/luence/ik-analyzer-3.2.8.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ftpserver-core-1.0.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mina-core-2.0.4.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

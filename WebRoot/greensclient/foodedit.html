@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <link rel="stylesheet" href="chosen.min.css" />
+    
+  </head> 
+  <body class="full-window">
+    <form class="simple-form" id="foodEditForm">
+      <div class="form-row">
+        <label>名称:</label>
+        <input type="text" name="name" class="simple-input"/>
+      </div>
+      <div class="form-row">
+        <label title="单独烹饪系数(1~10)">单独烹饪:</label>
+        <input type="text" name="singleScore" class="simple-input"/>
+      </div>
+      <div class="form-row">
+        <label>价格:</label>
+        <input type="text" name="money" class="simple-input"/>
+      </div>
+      <div class="form-row">
+        <label>食物类型:</label>
+        <select  dict="foodTypes" name="foodType"></select>
+      </div>
+      <div class="form-row">
+        <label>味道:</label>
+        <select dict="tastes" name="taste"></select>
+      </div>
+      <div class="form-row">
+        <label>食物性质:</label>
+        <select dict="qualitys" name="quality" ></select>
+      </div>
+      <div class="form-row">
+        <label>烹饪方法:</label>
+        <select dict="cookingMethods" name="cookingMethods" multiple="multiple"></select>
+      </div>
+      <div class="form-row">
+        <label>生长季节:</label>
+        <select dict="seasons" name="season"></select>
+      </div>
+      <div class="form-row" id="month">
+        <label>生长月份:</label>
+        <select name="growthTime.month"></select>
+      </div>
+    </form>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.validate.min.js"></script>
+    <script type="text/javascript" src="messages_zh.js"></script>
+    <script type="text/javascript" src="foodedit.js"></script>
+    
+  </body>
+</html>

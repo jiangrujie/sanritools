@@ -1,0 +1,93 @@
+.select-panel{
+    border: 1px solid #80c036;
+    background-color: #fff;
+
+    position: absolute;
+
+    font-size:14px;
+}
+
+.select-head{
+    background: #b397c0;
+    height:40px;
+}
+.select-head.hover{
+    background-color: #5bc0de;
+}
+.select-head.down{
+    background-color: #5e5e5e;
+}
+
+.select-head h3{
+    line-height:40px;
+    margin:0;
+    font-weight:normal;
+    padding:0 15px;
+}
+
+.select-content{
+    overflow-y: scroll;
+
+    /*这个要计算的,减去 title 的高度还有 border 2px*/
+    height:258px;
+}
+
+.select-content li{
+    line-height:35px;
+    border-bottom:1px dotted #e7e7e7;
+}
+
+.select-content li a{
+    display: block;
+}
+
+.select-content li a:hover{
+    background-color: pink;
+}
+.select-content li.select a{
+    background-color: palegreen;
+}
+
+.select-content li.select a:hover{
+    background-color: paleturquoise;
+}
+
+.select-content li a .msg{
+    width: 25px;
+    height:35px;
+    float: right;
+}
+
+.select-content li a .num{
+    width:25px;
+    height:35px;
+    text-align: center;
+}
+
+.select-content li a span{
+    display: inline-block;
+}
+.select-content .checkbox{
+    display: inline-block;
+    float: left;
+    padding: 0 2px;
+}
+.select-content .checkbox i{
+    width: 24px;
+    height:35px;
+    float: left;
+    background: url("../asset/fonts/select.png") no-repeat ;
+
+    /*background-color: #fff;*/
+
+    background-position: 0 center;
+}
+.select-content .checkbox i:hover{
+    background-position: -24px center;
+}
+.select-content .checkbox.checked i{
+    background-position: -48px center;
+}
+.select-content .checkbox.checked i:hover{
+    background-position: -48px center;
+}

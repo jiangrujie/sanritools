@@ -1,0 +1,118 @@
+.brand {
+  height: 50px;
+}
+
+.search,.filter,.greens-list {
+  width: 1190px;
+  margin: 0 auto;
+}
+
+.search {
+  padding: 8px 0;
+}
+.search .input-group-addon{
+  cursor: pointer;
+}
+.search .input-group-addon:HOVER{
+  border: 1px solid #f40;
+}
+.search .logo {
+  width: 150px;
+  height: 34px;
+  float: left;
+  padding: 0 15px;
+  padding-left: 0;
+  line-height: 34px;
+  text-align: center;
+}
+
+.filter-select {
+  padding: 8px 0;
+  line-height: 1.5
+}
+
+.filter {
+  border: 1px solid #e8e8e8;
+}
+
+.filter .filter-element {
+  width: 100%;
+  border-top: 1px dashed #dedede;
+  padding: 4px 0;
+}
+
+.filter .filter-element:first-child {
+  border-top: none;
+}
+
+.filter .filter-element label {
+  width: 80px;
+  text-align: right;
+  padding-right: 2px;
+  display: inline-block;
+  line-height: 20px;
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999;
+}
+
+.filter .filter-element ul {
+  display: inline-block;
+  color: #333;
+}
+
+.filter .filter-element ul li {
+  float: left;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.greens-list {
+  padding: 15px 0;
+}
+
+.greens-list li {
+  width: 220px;
+  height:265px;
+  float: left;
+  border: 1px solid #e8e8e8;
+  margin: 0 8px;
+  position: relative;
+}
+.greens-list li:first-child{
+  margin-left: 0;
+}
+.greens-list li:HOVER {
+  border-color: #f40;
+}
+.greens-list li a{
+  display: block;
+}
+.greens-list li .img-box {
+  width: 218;
+  height: 218px;
+  padding: 15px;
+  padding-bottom: 5px;
+}
+.greens-list li .img-box img{
+  width: 100%;
+  height: 100%;
+}
+.greens-list li p{
+  margin: 0;
+}
+.greens-list li p.green-name{
+  text-align: center;
+}
+.greens-list li .taste{
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+}
+.greens-list li .cuisines{
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+}

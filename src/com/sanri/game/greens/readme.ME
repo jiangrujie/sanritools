@@ -1,0 +1,43 @@
+这块主要做一个自动选菜的功能,将会自动的组合可能的食物,形成菜;
+组合完成后,有一个 web 前端来决定是否可以制作这道菜,如果可以将会保存;
+数据存储以 xml 格式存储; xml 格式如下:
+食物:	
+<foods>
+	<food>
+		<name>五花肉</name>
+		<type>meat</type> <!--meat 荤类,vegetable:蔬菜类,seafood:海鲜类,dessert:甜点类-->
+		<quality>未知</quality> <!--寒,凉,温,热,未知-->
+		<taste>甘</taste> <!--酸,苦,甘,辛,咸,腥,臭,特殊气味,未知-->
+		<cookingMethods>
+			<list>
+				<value>炒</value>
+				<value>蒸</value>
+				<value>熏</value>
+			</list>
+		</cookingMethods>
+		<singleScore>5</singleScore> <!--单独烹饪分数,分数越高,越有可能是单独烹饪的 1~10 分-->
+		<growthTime>
+			<season>any</season> <!--季节(春,夏,秋,冬,any)-->
+			<month>any</month><!--1~12,any-->
+		</growthTime>
+		<price>
+			<countable>false</countable>
+			<unit>斤(500g)</unit>
+			<money>15元</money>
+		</price>
+	</food>
+</foods>
+菜:
+<greenes>
+	<greens>
+		<name>辣椒炒肉</name>
+		<foods>
+			<list>
+				<value>五花肉</value>
+				<value>辣椒</value>
+			</list>
+		</foods>
+		<cookingQueue>炒</cookingQueue>
+		<cuisines>湘菜</cuisines> <!--菜系(川菜,东北菜,粤菜,湘菜,西餐)-->
+	</greens>
+</greenes>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../assert/appbase.css" />
+    <link rel="stylesheet" href="floatpanel.css" />
+    <style type="text/css">
+    	.page-wrapper{
+    		width: 100%;
+    		height: 100%;
+    	}
+    
+    	.dropdown{
+    		position: absolute;
+    		right: 10px;
+    		top: 10px;
+    		
+    		padding: 3px;
+    	}
+    	.dropdown i.fa{
+    		width: 16px;
+    		height: 16px;
+    	}
+    	.dropdown a{
+			width: 120px;
+    		height: 30px;
+    		
+    		border:1px solid #e7e7e7;
+    		border-radius:3px;
+    		padding:3px 15px;
+    		    		
+    		text-decoration: none;
+    		color: #777;
+    		background-color: #fff;
+    	}
+    	
+    	.dropdown a:HOVER {
+			color: #333;
+			background-color: #e7e7e7;	
+		}
+    </style>
+  </head> 
+  <body  style="height:1200px;">
+    
+	<script type="text/javascript" src="../../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="floatpanel.js"></script>
+    <div class="page-wrapper">
+	    <div class="dropdown prisoner-dropdown" id="prisoner-dropdown">
+	      <a href="#" class="dropdown-toggle"><i class="fa fa-user"></i> 犯人查看 <b class="fa fa-caret-down"></b></a>
+	    </div>
+    </div>
+    
+    <script type="text/javascript">
+    
+    	$('#prisoner-dropdown').floatpanel({
+    		onSelected:function(selected){
+    			console.log(selected);
+    		}
+    	});
+    	var data = [];
+    	refreshData();
+    	setInterval(refreshData,10);
+    	function refreshData(){
+			data = [];
+    		for(var i=0;i<1000;i++){
+				var num = Math.round(Math.random() * 1000),judge = num  % 2;
+				if(judge == 0){
+					continue;
+				}
+				var id = i,text = '囚犯-'+num,iconCls = 'fa-user';
+				data.push({id:id,text:text,iconCls:iconCls});
+    		}
+    		$('#prisoner-dropdown').floatpanel('refresh',data);
+    	}
+    	
+    	
+    </script>
+  </body>
+</html>

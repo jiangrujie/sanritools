@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts>
+  <foodTypes name="食物种类">
+    <foodType value="meat">荤类</foodType>
+    <foodType value="vegetable">蔬菜类</foodType>
+    <foodType value="seafood">海鲜类</foodType>
+    <foodType value="dessert">甜点类</foodType>
+    <foodType value="unknow">未知</foodType>
+  </foodTypes>
+  <qualitys name="性">
+    <quality value="cold">寒</quality>
+    <quality value="cool">凉</quality>
+    <quality value="warm">温</quality>
+    <quality value="hot">热</quality>
+    <quality value="unknow">未知</quality>
+  </qualitys>
+  <tastes name="味道">
+    <taste value="sour">酸</taste>
+    <taste value="bitterness">苦</taste>
+    <taste value="sweet">甜</taste>
+    <taste value="salty">咸</taste>
+    <taste value="peppery">辣</taste>
+    <taste value="fishy">腥</taste>
+    <taste value="stink">臭</taste>
+    <taste value="odor">特殊气味</taste>
+    <taste value="unknow">未知</taste>
+  </tastes>
+  <seasons name="季节">
+    <season value="spring">春</season>
+    <season value="summer">夏</season>
+    <season value="autumn">秋</season>
+    <season value="winter">冬</season>
+    <season value="any">任何季节</season>
+  </seasons>
+  <cookingMethods name="烹饪方法">
+    <cookingMethod value="fry">炒</cookingMethod>
+    <cookingMethod value="braise">蒸</cookingMethod>
+    <cookingMethod value="fumigate">熏</cookingMethod>
+    <cookingMethod value="boil">煮</cookingMethod>
+    <cookingMethod value="stuffy">闷</cookingMethod>
+    <cookingMethod value="stew">炖</cookingMethod>
+  </cookingMethods>
+  <cuisines name="菜系">
+    <cuisin value="shandong">鲁菜</cuisin>
+    <cuisin value="sichuan">川菜</cuisin>
+    <cuisin value="guangdong">粤菜</cuisin>
+    <cuisin value="fujian">闽菜</cuisin>
+    <cuisin value="jiangsu">苏菜</cuisin>
+    <cuisin value="zhejiang">浙菜</cuisin>
+    <cuisin value="hunan">湘菜</cuisin>
+    <cuisin value="anhui">徽菜</cuisin>
+  </cuisines>
+</dicts>

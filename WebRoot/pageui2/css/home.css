@@ -1,0 +1,121 @@
+.home-panel {
+  
+}
+
+.home-panel .panel-title {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  color: #333;
+  border-bottom: 1px dashed #ccc;
+}
+
+.home-panel .panel-title h3 {
+  position: absolute;
+  left: 21px;
+  font-weight: normal;
+}
+
+.home-panel .panel-title a {
+  position: absolute;
+  right: 10px;
+  color: #03a9f4;
+  cursor: pointer;
+}
+
+.home-panel .panel-title a:hover {
+  text-decoration: none;
+}
+
+.home-panel .panel-content {
+  
+}
+
+.panel-content .unit {
+  background-image: url("../images/index/aa1.png");
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+.panel-content .time {
+  background-image: url("../images/index/aa2.png");
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+.panel-content .content-meta {
+  
+}
+
+.panel-content .content-meta li {
+  float: left;
+}
+
+.panel-content .content-meta li a {
+  padding: 0 21px;
+  line-height: 50px;
+  height: 50px;
+}
+
+.panel-content .image-box {
+  padding: 0 21px;
+}
+
+.panel-content .image-box img {
+  width: 357px;
+  height: 220px;
+  cursor: pointer;
+}
+
+.panel-content .event-list {
+  padding: 0 21px;
+}
+
+.event-list li {
+  float: left;
+  width: 541px;
+}
+
+.event-list li a {
+  
+}
+
+.event-list li a img {
+  width: 120px;
+  height: 80px;
+  float: left;
+}
+
+.event-list li a .event-meta {
+  float: left;
+  padding: 5px;
+  height: 80px;
+  position: relative;
+  width: 300px;
+  background-image: url("../images/index/0right.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.event-list li a .event-meta h5.event-title {
+  position: absolute;
+  left: 5px;
+  font-size: 18px;
+  font-weight: normal;
+  width: 200px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.event-list li a .event-meta .meta-box {
+  position: absolute;
+  bottom: 0;
+}
+
+.event-list li a .event-meta .meta-box span {
+  display: inline-block;
+  float: left;
+  padding: 0 21px;
+}

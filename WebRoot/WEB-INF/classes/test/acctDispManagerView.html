@@ -1,0 +1,1551 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <title>账户资料操作</title>
+  <link rel="stylesheet" type="text/css" href="../../kui-base/themes/icon.css" />
+  <link rel="stylesheet" type="text/css" href="../../accountSystem/css/front-window.css" />
+  <link rel="stylesheet" type="text/css" href="../../accountSystem/css/trans/common.css" />
+  <script type="text/javascript" src="../../kui-base/js/core/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="../../kui-base/js/core/kui.loader.js"></script>
+  <script type="text/javascript" src="../../accountSystem/js/common.js"></script>
+  <script type="text/javascript" src="../../accountSystem/js/cuacct-operate.js"></script>
+  <style type="text/css">
+      body {
+        font-size: 13px;
+        background: url('../../frame/images/360/360-bg-line.png') repeat-x;
+        font-family: '微软雅黑';
+        background-color: #ffffff;
+        padding: 0px 20px;
+      }
+
+      span.head {
+        background-color: #E9F6FF;
+        color: #3380c1;
+        font-size: 13px;
+        height: 28px;
+      }
+
+      span.col {
+        background-color: #E9F6FF;
+        color: #3380c1;
+        font-size: 13px;
+        height: 29px;
+      }
+
+      .td-h-1 {
+        width: 90px;
+        text-align: right;
+      }
+
+      .td-h-2 {
+        width: 125px;
+      }
+
+      .rlt_open_tip, .trdcuacct_open_tip {
+        text-align: right;
+        cursor: pointer;
+        background: url(../images/layout_arrows.png) no-repeat -16px 0px;
+      }
+
+      .rlt_close_tip, .trdcuacct_close_tip {
+        text-align: right;
+        cursor: pointer;
+        background: url(../images/layout_arrows.png) no-repeat -16px -20px;
+      }
+
+      .fm_title {
+        line-height: 5px;
+        height: 29px;
+        background-color: #a2d4fa;
+        background: -webkit-linear-gradient(left, #d7f0fb 0, #a2d4fa 100%);
+        background: -moz-linear-gradient(left, #d7f0fb 0, #a2d4fa 100%);
+        background: -o-linear-gradient(left, #d7f0fb 0, #a2d4fa 100%);
+        background: linear-gradient(to right, #d7f0fb 0, #a2d4fa 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = #d7f0fb, endColorstr = #a2d4fa, GradientType = 1);
+      }
+
+      .fm_icon {
+        position: relative;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin-left: 4px;
+        margin-top: 4px;
+        background: url(../images/acct-icon-bg.png) no-repeat -80px 0;
+      }
+
+      .fm_title_font {
+        line-height: 30px;
+      }
+
+      .acct-btn-div {
+        margin: 7px 3px 3px 0px;
+        height: 48px;
+      }
+
+      .acctAdd-btn-icon {
+        width: 20px;
+        height: 20px;
+        background: url(../images/acct-icon-tools.png) no-repeat 0px -20px;
+        float: left;
+        margin: 0px 0 0 2px;
+        display: inline;
+      }
+
+      .bank-btn-icon {
+        width: 20px;
+        height: 20px;
+        background: url(../images/acct-icon-tools.png) no-repeat -20px -20px;
+        float: left;
+        margin: 0px 0 0 2px;
+        display: inline;
+      }
+
+      .acctDel-btn-icon {
+        width: 20px;
+        height: 20px;
+        background: url(../images/acct-icon-tools.png) no-repeat -40px -20px;
+        float: left;
+        margin: 0px 0 0 2px;
+        display: inline;
+      }
+
+      .acctLimit-btn-icon {
+        width: 20px;
+        height: 20px;
+        background: url(../images/acct-icon-tools.png) no-repeat -60px -20px;
+        float: left;
+        margin: 0px 0 0 2px;
+        display: inline;
+      }
+
+      .acctBankMod-btn-icon {
+        width: 20px;
+        height: 20px;
+        background: url(../images/acct-icon-tools.png) no-repeat -80px -20px;
+        float: left;
+        margin: 0px 0 0 2px;
+        display: inline;
+      }
+
+      .btnDiv > table {
+        display: table;
+        border-collapse: separate;
+        /*border-spacing: 2px;*/
+        border-color: gray;
+        background-color: #ffffff;
+      }
+
+      a:visited {
+        color: #4b53ff;
+        text-decoration: none;
+      }
+
+      a:link {
+        color: #4b53ff;
+        text-decoration: none;
+      }
+
+      a:link, a:visited, a:active {
+        text-decoration: none;
+        color: #256bae;
+      }
+
+      a:hover {
+        color: #ff3d3c;
+      }
+
+      -webkit-any-link {
+        color: -webkit-link;
+        text-decoration: underline;
+        cursor: auto;
+      }
+
+      tr.main {
+        background-color: #FFF;
+      }
+
+      tr.mouseover {
+        cursor: pointer;
+        background-color: #c5e7ff;
+      }
+
+      tr.click {
+        /*cursor: pointer;
+      background-color: #fff3a2*/
+      }
+
+      tr.white, td.white {
+        /*background-color:#ffffff;*/
+      }
+
+      #zjTabTr > table tr, #flzTabTr > table tr {
+        height: 29px;
+      }
+
+      #zjTabTr > table td, #flzTabTr > table td {
+        text-indent: 10px;
+        border-bottom: 1px solid #F2F2F2;
+      }
+
+      /*#zjTabTr>table td.main {
+      color: #EB7400;
+    }*/
+      .packUp-btn {
+        margin-top: 6px;
+        margin-left: 0px;
+        cursor: pointer;
+        float: left;
+        width: 20px;
+        background: url(../images/layout_arrows.png) no-repeat -16px 0;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: #336699;
+      }
+
+      .packDown-btn {
+        margin-top: 6px;
+        margin-left: 0px;
+        cursor: pointer;
+        float: left;
+        width: 20px;
+        background: url(../images/layout_arrows.png) no-repeat -16px -20px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: #336699;
+      }
+
+      .table-header, .wrapper-header {
+        width: 100%;
+        height: 32px;
+        line-height: 32px;
+      }
+
+        .table-header td, .wrapper-header {
+          text-align: center;
+          color: #1A70C2;
+          font-weight: normal;
+          font-family: "寰蒋闆呴粦";
+          background: linear-gradient(to bottom, #CFE9FD 0px, #E9F6FE 60%) repeat-x scroll 0% 0% transparent;
+        }
+
+        .table-header td {
+          border-left: 1px solid #E6F4FE;
+          border-right: 1px solid #C6E4FA;
+          border-bottom: 1px solid #E1F0FB;
+        }
+
+          .table-header td:last-child {
+            border-right: none;
+          }
+
+      .tabs-selected .tabs-title {
+        color: #fff;
+      }
+  </style>
+  <script type="text/javascript">
+    var BIZ_SNO = URLtool().getValueByUrlKey("BIZ_SNO");
+    window.pFrame = top.mainFrame || window.parent.frontManger;
+    requireJS(["/accountSystem/js/constant-key.js"], function () {
+      pFrame.removeCompListener(getCurFlowId() + FLOW_EVENT.COMPONENT);
+      pFrame.addCompListener(getCurFlowId() + FLOW_EVENT.COMPONENT, function () {
+        pFrame.removeCompListener(getCurFlowId() + FLOW_EVENT.COMPONENT);
+        pFrame.triggerCompHandler(getCurFlowId() + FLOW_EVENT.FLOW_NEXT);
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    var cuacctsData = [];//装载所有操作的资金账户数据
+    var cuacctNumbers = [], cuacctExtOrgRules = [];//资金账户币种个数;资金账户币种对应外部机构类别和个数
+    var G_WF_SNO = decodeURI(URLtool().getValueByUrlKey("WF_SNO")); //工单流水号
+    var G_BIZ_SNO = decodeURI(URLtool().getValueByUrlKey("BIZ_SNO")); //业务流水号
+    var G_USER_CODE = decodeURI(URLtool().getValueByUrlKey("USER_CODE")); //客户编码
+    var G_CUST_TYPE = decodeURI(URLtool().getValueByUrlKey("CUST_TYPE")); //客户类型 0 个人真实客户，1机构真实客户 2 个人准客户 3机构准客户
+    var G_NEW_CUST = decodeURI(URLtool().getValueByUrlKey("NEW_CUST")); //是否新客户 1 新，0 存量
+    var G_URL_BIZ_THEMS = decodeURI(URLtool().getValueByUrlKey("BIZ_THEMES")); //已选业务磁贴
+    var G_ORG_CODE = decodeURI(URLtool().getValueByUrlKey("ORG_CODE")); //客户所选模版
+    var G_BASE_ORG_CODE = decodeURI(URLtool().getValueByUrlKey("BASE_ORG_CODE")); //组织机构代码(机构户有)
+    var G_CUACCT_GRP, G_CUACCT_LVL, G_CUACCT_CLS;
+    /*
+     * 初始化资金账户和币种可开的个数和可开外部机构类别和个数
+     * */
+    function initCuacctNumbersAndRules() {
+      var rtn = commonRequest({
+        service: "U1510031"
+      });
+      cuacctNumbers = rtn[0]['CUACCT_LIMIT'];
+      cuacctExtOrgRules = rtn[0]['FUND_CHNL_DEF'];
+    }
+    function initData() {
+      var req = [
+        { "service": "U1510001", "BIZ_SNO": G_BIZ_SNO, "WF_SNO": G_WF_SNO, "CUST_CODE": G_USER_CODE },
+        { "service": "U1510002", "BIZ_SNO": G_BIZ_SNO, "WF_SNO": G_WF_SNO, "CUST_CODE": G_USER_CODE },
+        { "service": "U1810001", "BIZ_SNO": G_BIZ_SNO, "WF_SNO": G_WF_SNO, "CUST_CODE": G_USER_CODE },
+        //账户组别
+        { service: "P0000031", DICT_CODE: "CUACCT_GRP", ORG_CODE: G_ORG_CODE },
+        //账户级别
+        { service: "P0000031", DICT_CODE: "CUACCT_LVL", ORG_CODE: G_ORG_CODE },
+        //账户类别
+        { service: "P0000031", DICT_CODE: "CUACCT_CLS", ORG_CODE: G_ORG_CODE }
+      ];
+      ajaxRequest({
+        async: false,
+        req: req,
+        func: function (data) {
+          createCuacct();
+          G_CUACCT_GRP = data[3]['ANS_COMM_DATA'][0];
+          G_CUACCT_LVL = data[4]['ANS_COMM_DATA'][0];
+          G_CUACCT_CLS = data[5]['ANS_COMM_DATA'][0];
+        },
+        error: function () {
+          alert("获取资金账户、交易账户信息时出现异常.");
+        }
+      });
+    }
+
+    function setCuacctGrpAndLvl(form) {
+      var cuacctGrpDom = form.find("input[comboname=cuacctGrp]");
+      var cuacctLvlDom = form.find("input[comboname=cuacctLvl]");
+      var cuacctClsDom = form.find("input[comboname=cuacctCls]");
+      cuacctGrpDom.combobox({
+        valueField: 'DICT_ITEM',
+        textField: 'DICT_ITEM_NAME',
+        data: G_CUACCT_GRP,
+        autoFill: true
+      });
+      cuacctLvlDom.combobox({
+        valueField: 'DICT_ITEM',
+        textField: 'DICT_ITEM_NAME',
+        data: G_CUACCT_LVL,
+        autoFill: true
+      });
+      cuacctClsDom.combobox({
+        valueField: 'DICT_ITEM',
+        textField: 'DICT_ITEM_NAME',
+        data: G_CUACCT_CLS,
+        autoFill: true
+      });
+    }
+
+    function getCuacct() {
+      var cuaccts = [];
+
+      var cuaccts = commonRequest({
+        service: 'U1510003', 'BIZ_SNO': G_BIZ_SNO
+      });
+
+      cuaccts = _json2aBjson(cuaccts, _2aB);
+      return cuaccts;
+    }
+    function initOrgCount() {
+      return cuacctExtOrgRules;
+    }
+    function initCanOpenCuacctCount() {
+      var canOpenCount = [];
+      //  0:现货账户,1:信用账户,2:期货账户,3:银衍账户,4:独立存管
+      return cuacctNumbers;
+    }
+    function getOrgCount(cuacctAttr, currency) {
+      var orgCount = initOrgCount();
+      var rtn = [];
+      for (var i = 0, len = orgCount.length; i < len; i++) {
+        if (orgCount[i].CUACCT_ATTR == cuacctAttr && orgCount[i].CURRENCY == currency) {
+          rtn.push(orgCount[i]);
+        }
+      }
+      return rtn;
+    }
+    function getCanOpenCuacctCount(cuacctAttr, currency) {
+      var orgCount = initCanOpenCuacctCount();
+      var rtn = [];
+      for (var i = 0, len = orgCount.length; i < len; i++) {
+        if (orgCount[i].CUACCT_ATTR == cuacctAttr && orgCount[i].CURRENCY == currency) {
+          rtn.push(orgCount[i]);
+        }
+      }
+      return rtn;
+    }
+    /*
+     * 从左侧资金账户列表中获取主资金账户数据提供给表单中的 主资金账户下拉框
+     * 1.不包括当前资金账户
+     * 2.只有主资金账户
+     * 3.不能重复
+     * return [{cuacct:112233,cuacctText:'112233'}]
+     * */
+    function getMainCuacctCombo(currCuacct, currCuacctIsMain) {
+      var comboCuaccts = [];
+      if (currCuacctIsMain == 0) comboCuaccts = [
+        { cuacct: '0', cuacctText: ' ' }
+      ]; else {
+        var datas = [];
+        $('#zjTabTr>table').find('tr').each(function () {
+          var cache = $(this).data('cuacctCache');
+          var trCuacct = cache.tmpCuacct, parentCuacct = cache.parentCuacctCode;
+          if (trCuacct != currCuacct && parentCuacct == 0 && $.inArray(trCuacct, datas) == -1) {
+            datas.push(trCuacct);
+          }
+        });
+        for (var i = 0, len = datas.length; i < len; i++) {
+          var cuacctText = $('#zjTabTr>table').find('tr[tmpCuacct=' + datas[i] + '][parentCuacct=0]').attr('cuacct');
+          comboCuaccts.push({ 'cuacct': datas[i], 'cuacctText': datas[i] == 0 ? ' ' : cuacctText });
+        }
+      }
+      return comboCuaccts;
+    }
+    function checkCurrenFormValidate(obj) {
+      var form = $('#fmDiv').find('form:visible');
+      var formData = form.serializeArray();
+      var isNoOperation = true, //判断资金账户和支付账户表单是否有操作 true 无操作,false有操作
+              validResult = false;
+      //判断表单值是否为空,来验证客户是否操作过表单,仅仅只针对"新增资金账户和新增支付账户两个表单有效",其余表单一概验证
+      if (form.attr('id') == 'addCuacct_form' || form.attr('id') == 'addPayCuacct_form' || form.attr('id') == 'addCurrency_form') {
+        for (var j = 0; j < formData.length; j++) {
+          var name = formData[j].name;
+          var value = kui.valueReplace(formData[j].value);
+          if (name != 'cuacctCode' && value != '') {
+            isNoOperation = false;
+            break;
+          }
+        }
+      } else {
+        isNoOperation = false;
+      }
+      if (!isNoOperation) {
+        validResult = visibleCurrenForm(form);
+      } else {
+        validResult = true;
+      }
+      if (!isNoOperation && validResult === true) {
+        //saveCurrenForm(form);
+      } else {
+      }
+      return validResult;
+    }
+    function currenFormJsonData() {
+      var form = $('#fmDiv').find('form:visible');
+      var formData = form.serializeArray();
+      var jsonData = {};
+      for (var j = 0; j < formData.length; j++) {
+        var name = formData[j].name;
+        var value = kui.valueReplace(formData[j].value);
+        if (jsonData[name])
+          jsonData[name] = jsonData[name] + ',' + value; else
+          jsonData[name] = value;
+      }
+      return jsonData;
+    }
+    function saveCurrenForm(currForm) {
+      var formId = currForm.attr('id');
+      var formCache = currForm.data('formCache');
+      var cuacctTable = $('#zjTabTr>table');
+      //新增资金账户的表单保存
+      var formData = currenFormJsonData();
+      if (formCache && formCache.tmpCuacct) {
+        var targetTr = cuacctTable.find('tr[tmpCuacct=' + formCache.tmpCuacct + ']');
+        formCache = $.extend({}, formCache, formData);
+        currForm.data('formCache', formCache);
+        modifyDomToTable(formCache);
+      } else {
+        formData.cuacctCode = formId == 'addCuacct_form' ? '新开资金账户' + cuacctCount : '新开支付账户' + payCuacctCount;
+        formData.tmpCuacct = getVMSeq();
+        currForm.data('formCache', formData);
+        appendDomToTable(formData, !parseInt(formData.isMainCuacct));
+      }
+    }
+    function appendDomToTable(cuacct, isAppendToParent) {
+      var cuacctTable = $('#zjTabTr>table');
+      var currForm = $('#fmDiv').find('form:visible');
+      var parentCuacctCode = cuacct.parentCuacctCode;
+      if (isAppendToParent === true) {
+        var clickedTr = cuacctTable.find('tr.tr-click');
+        var clickedCuacct = clickedTr.data('cuacctCache');
+        var targetTrs;
+        if (currForm.attr('id') == 'addCurrency_form') targetTrs = cuacctTable.find('tr.tr-click[tmpcuacct=' + clickedCuacct.tmpCuacct + ']'); else targetTrs = cuacctTable.find('tr[tmpCuacct=' + parentCuacctCode + ']');
+        //判断当前要新增账户的父账户,是否有相同币种,否则不让新增
+        var targetTr = targetTrs.last();
+        var lastTargetTrCache = targetTr.data('cuacctCache');
+        var trCls = 'white';
+        var tr;
+        if (currForm.attr('id') == 'addCurrency_form') {
+          //对于新增的表单,提交到这里,针对有币种的情况,币种的其他属性(除了币种,利率类别,外部机构和外部账户外),都继承所选账户的属性
+          tr = $('<tr cuacct="' + lastTargetTrCache.cuacctCode + '" parentCuacct="0" tmpCuacct="' + cuacct.tmpCuacct + '" currency="' + cuacct.currency + '" cuacctAttr="' + cuacct.cuacctAttr + '" class="' + trCls + '"><td class="' + trCls + '" style="text-indent:35px;">......</td><td>' + getSysDictOpt('CURRENCY', cuacct.currency) + '</td><td>' + getSysDictOpt('CUACCT_ATTR', cuacct.cuacctAttr) + '</td><td>待开通</td></tr>');
+        } else {
+          //增加子账户
+          tr = $('<tr cuacct="' + cuacct.cuacctCode + '" parentCuacct="' + cuacct.parentCuacctCode + '" tmpCuacct="' + cuacct.tmpCuacct + '" currency="' + cuacct.currency + '" cuacctAttr="' + cuacct.cuacctAttr + '" class="' + trCls + '"><td class="' + trCls + '">' + cuacct.cuacctCode + '</td><td>' + getSysDictOpt('CURRENCY', cuacct.currency) + '</td><td>' + getSysDictOpt('CUACCT_ATTR', cuacct.cuacctAttr) + '</td><td>待开通</td></tr>');
+        }
+        tr.data("cuacctCache", cuacct);
+        targetTr.after(tr);
+      } else {
+        //增加主账户
+        if (parentCuacctCode == 0) trCls = "main";
+        var tr = $('<tr cuacct="' + cuacct.cuacctCode + '" parentCuacct="' + cuacct.parentCuacctCode + '" tmpCuacct="' + cuacct.tmpCuacct + '" currency="' + cuacct.currency + '" cuacctAttr="' + cuacct.cuacctAttr + '" class="' + trCls + '"><td class="' + trCls + '">' + cuacct.cuacctCode + '</td><td>' + getSysDictOpt('CURRENCY', cuacct.currency) + '</td><td>' + getSysDictOpt('CUACCT_ATTR', cuacct.cuacctAttr) + '</td><td>待开通</td></tr>');
+        //资金列表table中没有资金账户的,新增时,需要指定列宽
+        if (!cuacctTable.find('tr').length) tr.children('td').width($('#zjTabHead').find('td:eq(0)').outerWidth());
+        tr.data("cuacctCache", cuacct);
+        cuacctTable.append(tr);
+      }
+    }
+    function modifyDomToTable(cuacct) {
+      var tmpCuacct = cuacct.tmpCuacct;
+      var cuacctTable = $('#zjTabTr>table');
+      var targetTr = cuacctTable.find('tr[tmpCuacct=' + tmpCuacct + '][currency=' + cuacct.currency + ']');
+      targetTr.attr('currency', cuacct.currency);
+      targetTr.attr('cuacctAttr', cuacct.cuacctAttr);
+      targetTr.find('td:eq(1)').text(getSysDictOpt('CURRENCY', cuacct.currency));
+      targetTr.find('td:eq(2)').text(getSysDictOpt('CUACCT_ATTR', cuacct.cuacctAttr));
+      targetTr.data('cuacctCache', cuacct);
+    }
+    function getVMSeq() {
+      //正在获取虚拟资金帐号
+      var seq = 0;
+      seq = commonRequest({
+        service: "U0010001"
+      })[0]['CUACCT_CODE'];
+      return seq;
+    }
+    /*
+     * 验证当前表单的合法性
+     * */
+    function visibleCurrenForm(currenForm) {
+      var valid = currenForm.form('validate');
+      return valid;
+    }
+    function getUnResigterCurrency(cuacctCode) {
+      var allCurrencys = getSysDict('CURRENCY');//所有币种
+      var registedCurrencys = getCurrencyByMainCuacct(cuacctCode);//已开通过的币种
+      var temp = [];
+      var unResigterCurrency = [];
+      for (var i = 0; i < registedCurrencys.length; i++) {
+        temp[registedCurrencys[i]] = true;
+      }
+      for (var i = 0; i < allCurrencys.length; i++) {
+        if (!temp[allCurrencys[i].dict_val]) {
+          unResigterCurrency.push(allCurrencys[i]);
+        }
+      }
+      return unResigterCurrency;
+    }
+    function getCurrencyByMainCuacct(cuacct) {
+      var currencys = [];
+      $('#zjTabTr>table').find('tr[tmpCuacct=' + cuacct + ']').each(function () {
+        var cache = $(this).data('cuacctCache');
+        var currency = cache.currency;
+        currencys.push(currency);
+      });
+      return currencys;
+    }
+    var clickedBtn = '';
+    /*
+     * 切换主账户标识的下拉框,根据选择的是与否,切换主资金账户下拉数据
+     * 判断点: 1 是否点击了按钮(点击按钮后弹出的表单),切换时,要查所有主资金账户
+     *         2 没有点击任何按钮,直接点击的行记录切换的表单,则只选择除自己之外的其他主资金账户
+     *         3 主账户标识为是,主资金账户下拉框不让选择,反之则反
+     * */
+    function changeIsMainCuacct(selectItem) {
+      var mainCuacctCombo;
+      if (clickedBtn != '') mainCuacctCombo = $('#' + clickedBtn).find('input[comboname=parentCuacctCode]'); else mainCuacctCombo = $('#modifyPayCuacct_form').find('input[comboname=parentCuacctCode]');
+      if (selectItem['id'] == 0) {
+        //不是主账户
+        mainCuacctCombo.combobox('enable');
+        mainCuacctCombo.combobox('loadData', getMainCuacctCombo(clickedBtn != '' ? '' : clickedCuacct.cuacctCode, 1)).combobox('setValue', '');
+      } else {
+        mainCuacctCombo.combobox('loadData', getMainCuacctCombo(clickedBtn != '' ? '' : clickedCuacct.cuacctCode, 0)).combobox('setValue', '0');
+        mainCuacctCombo.combobox('disable');
+      }
+    }
+    function changeIsMainCuacct2(selectItem) {
+      var mainCuacctCombo;
+      //主资金账户下拉框
+      mainCuacctCombo = $('#addCuacct_form').find('input[comboname=parentCuacctCode]');
+      if (selectItem['id'] == 0) {
+        //不是主账户
+        mainCuacctCombo.combobox('enable');
+        mainCuacctCombo.combobox('loadData', getMainCuacctCombo(clickedBtn != '' ? '' : clickedCuacct.cuacctCode, 1)).combobox('setValue', '');
+      } else {
+        mainCuacctCombo.combobox('loadData', getMainCuacctCombo(clickedBtn != '' ? '' : clickedCuacct.cuacctCode, 0)).combobox('setValue', '0');
+        mainCuacctCombo.combobox('disable');
+      }
+    }
+    /*
+     * 切换币种的下拉框,根据选择的币种,切换利率类别下拉数据
+     *
+     * */
+    function changeCurrency(selectItem) {
+      /* var currency = selectItem['dict_val'];
+      var rates = getRateComboDataByCurrency(currency);
+      var ratesCombo;
+
+      var form = $('#fmDiv').find('form:visible');
+      ratesCombo = form.find('input[comboname=rateCls]');
+      ratesCombo.combobox('loadData',rates).combobox('setValue',''); */
+    }
+    /* function getRateComboDataByCurrency(currency){
+      var rateDatas = [];
+      rateDatas = commonRequest({
+        service:'U0320140',CURRENCY:currency
+      });
+      return rateDatas;
+    } */
+    kuiloader.onReady = function () {
+      getSysDictOpt('CUACCT_DMF', "0");
+      initWidth();//计算内容区域宽度
+      initData();//初始化资金账户/签约信息/交易账户
+      setTimeout(function () {
+        setCuacctGrpAndLvl($("#modifyCuacct_form"));
+      }, 500);
+      //  initCuacctNumbersAndRules();
+      //资金账户表格事件
+      var table = $('#zjTabTr>table');
+      table.find('tr').live({
+        click: function () {
+          clickedBtn = "";//清除已缓存的点击的按钮名
+          $(this).addClass('tr-click').siblings('tr').removeClass('tr-click');
+          beforeClickCuacctOrBtn();
+        },
+        mouseover: function () {
+          $(this).addClass('tr-hover');
+        }, mouseout: function () {
+          $(this).removeClass('tr-hover');
+        }
+      });
+      setUrlParams('trdIframe', 'acctTrdAccountView.html');
+      setTimeout(function () {
+        table.find('tr:first').click();
+      }, 1000);
+    }
+    function createCuacct() {
+      var cuaccts = getCuacct(), table = $('#zjTabTr>table'), tdWidth = $('#zjTabHead>table').find('td:eq(0)').width() * 1 + 1;
+      table.children().remove();
+      createCuacctDom(cuaccts);
+      var obj = $('#zjTabTr').get(0);
+      if (obj.scrollHeight > obj.clientHeight || obj.offsetHeight > obj.clientHeight) {
+        $('#zjTabHead>table').find('td').width(tdWidth - 5);
+        table.find('td').width(tdWidth - 1);
+      } else {
+        table.find('td').width(tdWidth);
+      }
+      flushCuacctsData();
+    }
+    function createCuacctDom(cuaccts) {
+      var table = $('#zjTabTr>table');
+      for (var i = 0, len = cuaccts.length; i < len; i++) {
+        var cuacct = cuaccts[i];
+        var isMainAcct = cuacct.parentCuacctCode;
+        var trCls = isMainAcct == '0' ? 'main' : 'white';
+        var prevTr = table.find('tr').eq(i - 1);
+        var prevTrChache = prevTr.data('cuacctCache');
+        var tr;
+        var trStatus;
+        //多币种加空格
+        cuacct.tmpCuacct = cuacct.cuacctCode;
+        var newOptions = cuacct;
+        if (prevTr.length > 0 && prevTrChache.cuacctCode == cuacct.cuacctCode) {
+          trCls = "white";
+          trStatus = cuacct.cuacctCode.indexOf("NEW") != -1 ? "待开通" : getSysDictOpt('CUACCT_STATUS', cuacct.cuacctStatus);
+          tr = $('<tr cuacct="' + cuacct.cuacctCode + '" parentCuacct="' + cuacct.parentCuacctCode + '" tmpCuacct="' + cuacct.tmpCuacct + '" currency="' + cuacct.currency + '" cuacctAttr="' + cuacct.cuacctAttr + '" class="' + trCls + '"><td class="' + trCls + '" style="text-indent:35px;">......</td><td>' + getSysDictOpt('CURRENCY', cuacct.currency) + '</td><td>' + getSysDictOpt('CUACCT_ATTR', cuacct.cuacctAttr) + '</td><td>' + trStatus + '</td></tr>');
+          cuacct.cuacctType = 2;//币种
+          tr.data("cuacctCache", newOptions);
+          table.append(tr);
+          //子账户
+        } else if (prevTr.length > 0 && (prevTrChache.cuacctCode == cuacct.parentCuacctCode || prevTrChache.parentCuacctCode == cuacct.parentCuacctCode && cuacct.parentCuacctCode != 0)) {
+          trStatus = cuacct.cuacctCode.indexOf("NEW") != -1 ? "待开通" : getSysDictOpt('CUACCT_STATUS', cuacct.cuacctStatus);
+          tr = $('<tr cuacct="' + cuacct.cuacctCode + '" parentCuacct="' + cuacct.parentCuacctCode + '" tmpCuacct="' + cuacct.tmpCuacct + '" currency="' + cuacct.currency + '" cuacctAttr="' + cuacct.cuacctAttr + '" class="' + trCls + '"><td class="' + trCls + '">' + cuacct.cuacctCode + '</td><td>' + getSysDictOpt('CURRENCY', cuacct.currency) + '</td><td>' + getSysDictOpt('CUACCT_ATTR', cuacct.cuacctAttr) + '</td><td>' + trStatus + '</td></tr>');
+          cuacct.cuacctType = 1;//子账户
+          tr.data("cuacctCache", newOptions);
+          table.append(tr);
+        } else {
+          //主账户
+          trStatus = cuacct.cuacctCode.indexOf("NEW") != -1 ? "待开通" : getSysDictOpt('CUACCT_STATUS', cuacct.cuacctStatus);
+          tr = $('<tr cuacct="' + cuacct.cuacctCode + '" parentCuacct="' + cuacct.parentCuacctCode + '" tmpCuacct="' + cuacct.tmpCuacct + '" currency="' + cuacct.currency + '" cuacctAttr="' + cuacct.cuacctAttr + '" class="' + trCls + '"><td class="' + trCls + '">' + cuacct.cuacctCode + '</td><td>' + getSysDictOpt('CURRENCY', cuacct.currency) + '</td><td>' + getSysDictOpt('CUACCT_ATTR', cuacct.cuacctAttr) + '</td><td>' + trStatus + '</td></tr>');
+          cuacct.cuacctType = 0;//主账户
+          tr.data("cuacctCache", newOptions);
+          table.append(tr);
+        }
+      }
+    }
+    function createSlideDown() {
+      var table = $('#zjTabTr>table');
+      var currenTr;
+      table.children('tr').each(function (indez) {
+        currenTr = $(this);
+        var currenTrCache = $(this).data('cuacctCache');
+        if (indez != 0) {
+          if (currenTrCache.cuacctType == 2) {
+          }
+        }
+      });
+    }
+    function beforeClickCuacctOrBtn($btn) {
+      if (typeof ($btn) == 'undefined')
+        clickCuacct(); else
+        clickTableButton($btn);
+    }
+    function getRateComboDataByCurrency(cuacct) {
+      var _CUACCT_ATTR = cuacct.cuacctAttr;
+
+      var _service = "";
+      var rateDatas = [];
+      if (!_CUACCT_ATTR) {
+        return rateDatas;
+      } else if (_CUACCT_ATTR == "0") {
+        _service = "U3914209";
+      } else if (_CUACCT_ATTR == "1") {
+        //暂无
+        alert("信用账户暂无利率查询接口");
+        return rateDatas;
+      } else if (_CUACCT_ATTR == "2") {
+        return rateDatas;
+      } else if (_CUACCT_ATTR == "3") {
+        //暂无
+        alert("银衍账户暂无利率查询接口");
+        return rateDatas;
+      } else if (_CUACCT_ATTR == "4") {
+        return rateDatas;
+      } else {
+        return rateDatas;
+      }
+      //var form = $('#fmDiv').find('form:visible');
+      var _INT_ORG = cuacct.intOrg;//G_ORG_CODE;//form.find("input[comboname=intOrg]").combotree("getValue");
+      var _CUACCT_DMF = cuacct.cuacctDmf;// form.find('input[comboname=cuacctDmf]').combobox("getValue");
+      var currency = cuacct.currency;
+
+      var r = commonRequest({
+        service: _service, F_SERVERID: "1", CURRENCY: currency, INT_ORG: _INT_ORG, CUACCT_ATTR: _CUACCT_ATTR, CUACCT_DMF: _CUACCT_DMF
+      });
+      if (r.length > 0) {
+        for (var i = 0; i < r.length; i++) {
+          rateDatas.push({
+            RATE_NAME: r[i].SUB_ITEMNAME,
+            RATE_CLS: r[i].RATE_CLS
+          });
+        }
+      }
+      return rateDatas;
+    }
+
+    function clickCuacct() {
+      var clickedTr = $('#zjTabTr').find('tr.tr-click');
+      var clickedCuacct = clickedTr.data('cuacctCache');
+
+      var rates = getRateComboDataByCurrency(clickedCuacct);
+      var cuacctFormWidth = $("#tabs").width();
+      var cuacctFormHeight = $("#tabs").height();
+
+      $("#loadingDiv").css({
+        "width": cuacctFormWidth,
+        "height": cuacctFormHeight,
+        "background-color": "#FFFFFF",
+        "position": "absolute",
+        "z-index": 2,
+        "opacity": 0.5
+      }).show();
+
+
+      var cuacctForm; //清空所有的动态添加出来的外部机构和外部账户表单元素
+      $('#payWay').remove();
+      $('div[for][for=extOrgDiv]').remove();
+      $('#tabs').tabs('select', 0);
+      //点击的资金账户,则弹出修改资金账户的框
+      $('#formTit').text('账户详情');
+      cuacctForm = $('#modifyCuacct_form').show();
+      //点击的主账户 则主资金账户下拉框隐藏
+      if (clickedCuacct.parentCuacctCode == 0 || clickedTr.find('td:eq(0)').text() == '......') {
+        $('#mainCuacctTd3,#mainCuacctTd4').hide();
+      } else { //点击的子资金账户 主资金账户下拉框显示
+        $('#mainCuacctTd3,#mainCuacctTd4').show();
+        $('#mainCuacctTd4').html('').append('<input name="parentCuacctCodeName" value="' + clickedCuacct.cuacctCode + '" disabled="disabled" class="kui-validatebox validatebox-text form-input-disabled" kui-options="disabled:\'disabled\'" style="width: 120px;"><input type="hidden" name="parentCuacctCode" disabled style="width: 120px;">');
+      }
+      cuacctForm.siblings('form').hide();
+      cuacctForm.form('reset');
+      cuacctForm.find('input[comboname=rateCls]').combobox('loadData', rates);
+      setCuacctGrpAndLvl(cuacctForm);//设置组别
+      clickedCuacct.cuacctGrp = $.trim(clickedCuacct.cuacctGrp);
+      clickedCuacct.cuacctCls = $.trim(clickedCuacct.cuacctCls);
+      clickedCuacct.cuacctLvl = $.trim(clickedCuacct.cuacctLvl);
+
+      $.parser.director(cuacctForm);
+      cuacctForm.form('load', clickedCuacct);
+      cuacctForm.data('formCache', clickedCuacct);
+      //迭代资金账户的银证签约和支付签约
+      var len = typeof (clickedCuacct.custCuacctContractHandle) == 'undefined' ? 0 : clickedCuacct.custCuacctContractHandle.length;
+      //console.log("外部机构个数:" + len);
+      for (var i = 0; i < len; i++) {
+        var extOrgCls = clickedCuacct.custCuacctContractHandle[i]['extOrgCls'];
+        var extOrgType = clickedCuacct.custCuacctContractHandle[i]['extOrgType'];
+        var extAcct = clickedCuacct.custCuacctContractHandle[i]['extAcct'];
+        var extOrg = clickedCuacct.custCuacctContractHandle[i]['extOrg'];
+        var extOrgName = clickedCuacct.custCuacctContractHandle[i]['extOrgName'];
+        if (clickedCuacct.cuacctAttr != 4) {
+          //通过缓存起来的外部机构类型和类别 读取外部机构的下拉框
+          createExtOrg(i, extOrgCls, extOrgType == 'undefined' ? '' : extOrgType, 1, clickedCuacct.cuacctAttr, clickedCuacct.currency);
+        } else {
+          //创建支付方式的下拉框
+          createPayWay(true);
+          $.parser.director($('#payWay'));
+          //支付方式为保证金支付的,创建资金帐号下拉框
+          if (typeof (clickedCuacct.custCuacctContractHandle) != 'undefined' && clickedCuacct.custCuacctContractHandle.length > 0) {
+            var payWay = typeof (clickedCuacct.custCuacctContractHandle[0].payWay) == 'undefined' ? '' : clickedCuacct.custCuacctContractHandle[0].payWay;
+            if (payWay != '') {
+              changePayWay({ dict_val: clickedCuacct.custCuacctContractHandle[0].payWay }, true);
+              var payOrg = typeof (clickedCuacct.custCuacctContractHandle[0].payOrg) == 'undefined' ? '' : clickedCuacct.custCuacctContractHandle[0].payOrg;
+              if (payOrg != '') {
+                changePayOrg({ 'ORG_ID': payOrg }, true);
+              } else {
+              }
+            } else {
+            }
+          } else { //支付方式为第三方支付或线下支付的,删除资金帐号下拉框,创建支付机构下拉框
+            $('#payAcct').remove();
+          }
+        }
+      }
+      if (len) {
+        $.parser.director(cuacctForm.find('div[for][for=extOrgDiv]'));
+      }
+      if (clickedCuacct.cuacctAttr != 4) {
+        //外部机构循环赋值
+        setTimeout(function () {
+          for (var i = 0; i < len; i++) {
+            var extOrg = clickedCuacct.custCuacctContractHandle[i]['extOrg'];
+            var extAcct = clickedCuacct.custCuacctContractHandle[i]['extAcct'];
+            var idType = clickedCuacct.custCuacctContractHandle[i]['bankIdType'];
+            var bankIdCode = clickedCuacct.custCuacctContractHandle[i]['bankIdCode'];
+            var bankCustName = clickedCuacct.custCuacctContractHandle[i]['bankCustFname'];
+            cuacctForm.find('input[comboname=extOrg]').eq(i).combobox('setValue', extOrg);
+            cuacctForm.find('input[name=extAcct]').eq(i).val(extAcct).attr("title", extAcct);
+
+            var cardInfo = queryCardInfo();
+            cuacctForm.find('input[comboname=idType]').eq(i).combobox({
+              valueField: 'type',
+              textField: 'txt',
+              data: cardInfo
+            });
+            cuacctForm.find('input[comboname=idType]').eq(i).combobox('setValue', idType);
+            cuacctForm.find('input[comboname=idType]').eq(i).combobox({ disabled: true });
+            cuacctForm.find('input[name=bankIdCode]').eq(i).val(bankIdCode).attr("title", bankIdCode);
+            cuacctForm.find('input[name=bankCustName]').eq(i).val(bankCustName).attr("title", bankCustName);
+            cuacctForm.find('input[name=bankIdCode]').eq(i).validatebox("disabled");
+            cuacctForm.find('input[name=bankCustName]').eq(i).validatebox("disabled");
+
+          }
+          $("#loadingDiv").hide();
+          removeBodyMask();
+        }, 1000);
+      } else {
+        if (typeof (clickedCuacct.custCuacctContractHandle) != 'undefined' && clickedCuacct.custCuacctContractHandle.length > 0)
+          setTimeout(function () {
+            cuacctForm.form('load', clickedCuacct.custCuacctContractHandle[0]);
+          }, 500);
+        $("#loadingDiv").hide();
+        removeBodyMask();
+      }
+    }
+
+    var G_CARD_INFO = [];
+    function queryCardInfo() {
+      if (G_CARD_INFO.length > 0) {
+        return G_CARD_INFO;
+      }
+      var cardInfo = commonRequest({
+        service: "U0610131",
+        BIZ_SNO: G_BIZ_SNO,
+        CUST_TYPE: G_CUST_TYPE
+      });
+      if (cardInfo && cardInfo.length > 0) {
+        for (var i = 0; i < cardInfo.length; i++) {
+          G_CARD_INFO.push({
+            "type": cardInfo[i].ID_TYPE,
+            "val": cardInfo[i].ID_CODE,
+            "txt": getSysDictOpt('ID_TYPE', cardInfo[i].ID_TYPE)
+          });
+        }
+      }
+      if (G_CUST_TYPE == "1") {//机构户
+        // 如果是资金账户开户、银证变更和币种利率变更，则组织机构代码证不存在，需重新查询
+        if (!G_BASE_ORG_CODE) {
+          var userInfo = commonRequest({ "service": "U0616135", "CUST_CODE": G_USER_CODE });
+          if (userInfo && userInfo.length > 0) {
+            G_BASE_ORG_CODE = userInfo[0].ORG_CODE;
+          }
+        }
+        G_CARD_INFO.push({
+          "type": "12",
+          "val": G_BASE_ORG_CODE,
+          "txt": "组织机构代码证"
+        });
+      }
+      return G_CARD_INFO;
+    }
+
+    function clickTableButton(btn) {
+      var formName = btn.attr('for');
+      clickedBtn = formName; //记录点击的按钮对应的表单名
+      var form = $('#' + clickedBtn);
+      form.form('reset');
+      var flag = true; //切换form标识
+
+      if (clickedBtn == '')
+        if (clickedBtn == 'addCuacct_form' || clickedBtn == 'addCurrency_form') {
+          //清除右侧表单中 的多银行信息
+          form.removeData('formCache');
+        }
+      var clickedTr = $('#zjTabTr').find('tr.tr-click');
+      var clickedCuacct = clickedTr.data('cuacctCache');
+      if (clickedBtn == 'addCurrency_form') {
+        //点击了增加币种按钮
+        if (clickedCuacct && clickedCuacct.tmpCuacct && clickedCuacct.parentCuacctCode == '0' && clickedCuacct.cuacctAttr != '4') {
+          //获取已选择主资金账户未开通过的币种
+          form.find('input[name=cuacctCode]').val(clickedCuacct.cuacctCode);
+          var registedCurrencys = getUnResigterCurrency(clickedCuacct.tmpCuacct);
+          if (registedCurrencys.length == 0) {
+            clickedBtn = '';
+            flag = false;
+            alert('该主资金账户已开通所有币种,无法再增加币种');
+            if ($('#addCurrency_form').find('input[comboname=currency]').length) {
+              $('#addCurrency_form').find('input[comboname=currency]').combobox('loadData', []);
+              $('#addCurrency_form').find('input[comboname=rateCls]').combobox('loadData', []);
+            }
+            return;
+          } else {
+            flag = true;
+            //        $('div[for=extOrgDiv]').remove();
+            $('#addCurrency_form').find('input[comboname=currency]').combobox('loadData', registedCurrencys).combobox('setValue', '');
+          }
+        } else {
+          clickedBtn = '';
+          flag = false;
+          alert('币种只能增加在主资金账户上,支付账户不能增加币种');
+          return;
+        }
+      }
+      if (clickedBtn == 'modifyCg_form') { //点击的存管变更按钮
+        if (typeof (clickedCuacct) == 'undefined' || typeof (clickedCuacct.cuacctCode) == 'undefined') {
+          clickedBtn = '';
+          flag = false;
+          alert('请选择要变更的存管账户');
+          return;
+        }
+        var cuacctAttr = clickedCuacct.cuacctAttr;
+        if (cuacctAttr != '0' || clickedCuacct.currency != '0') {
+          clickedBtn = '';
+          flag = false;
+          alert('只能变更监管属性为现货且币种为人民币的资金账户');
+          return;
+        }
+      }
+      if (clickedBtn == 'cuacctLimite_form') { //点击的账户限制按钮
+        if (typeof (clickedCuacct) == 'undefined' || typeof (clickedCuacct.cuacctCode) == 'undefined') {
+          clickedBtn = '';
+          flag = false;
+          alert('请选择要操作的存管账户');
+          return;
+        } else if (clickedCuacct.cuacctAttr != '0' || clickedCuacct.currency != '0' || clickedCuacct.parentCuacctCode == '' || clickedCuacct.parentCuacctCode == '0') {
+          clickedBtn = '';
+          flag = false;
+          alert('存管限制只能操作监管属性为现货且币种为人民币的子资金账户');
+          return;
+        } else {
+          form.find('input[name=tmpCuacctName]').val(clickedCuacct.cuacctCode);
+          var parentCuacctCodeName = $('#zjTabTr>table').find('tr[tmpCuacct=' + clickedCuacct.parentCuacctCode + ']').first().data('cuacctCache').cuacctCode;
+          form.find('input[name=parentCuacctCodeName]').val(parentCuacctCodeName);
+        }
+      }
+      if (flag) {
+        $('div[for=extOrgDiv]').remove();
+        var tit = btn.attr('tit');
+        if (tit != '') $('#formTit').text(tit);
+        form.show().siblings('form').hide();
+        if (clickedBtn == 'addCuacct_form') {
+          form.attr('for', btn.attr('addFor'));
+          if (btn.attr('addFor') == 'main') {
+            $('#mainCuacctTd1,#mainCuacctTd2').hide();
+            $('#mainCuacctTd2').html('');
+          } else {
+            var mainCuaccts = getMainCuacctCombo(0, 1);
+            $('#mainCuacctTd1,#mainCuacctTd2').show();
+            var data = "[";
+            for (var i = 0, len = mainCuaccts.length; i < len; i++) {
+              if (i == 0) data += "{cuacctText:'" + mainCuaccts[i].cuacctText + "',cuacct:'" + mainCuaccts[i].cuacct + "'}"; else data += ",{cuacctText:'" + mainCuaccts[i].cuacctText + "',cuacct:'" + mainCuaccts[i].cuacct + "'}";
+            }
+            data += "]";
+            var tr = $('<input class="kui-combobox" name="parentCuacctCode" kui-options="showMessage:false,required:true,data:' + data + ',textField:\'cuacctText\',valueField:\'cuacct\'"/>');
+            $('#mainCuacctTd2').html('').append(tr);
+            $.parser.director($('#mainCuacctTd2'));
+          }
+        }
+        if (clickedBtn == 'modifyCg_form') {
+          $('div[for][for=extOrgDiv]').remove();
+          form.form('load', clickedCuacct);
+          var len = typeof (clickedCuacct.custCuacctContractHandle) == 'undefined' ? 0 : clickedCuacct.custCuacctContractHandle.length;
+          for (var i = 0; i < len; i++) {
+            var extOrgCls = clickedCuacct.custCuacctContractHandle[i]['extOrgCls'];
+            var extOrgType = clickedCuacct.custCuacctContractHandle[i]['extOrgType'];
+            var extAcct = clickedCuacct.custCuacctContractHandle[i]['extAcct'];
+            var extOrg = clickedCuacct.custCuacctContractHandle[i]['extOrg'];
+            var extOrgName = clickedCuacct.custCuacctContractHandle[i]['extOrgName'];
+            if (clickedCuacct.cuacctAttr != 4) {
+              //通过缓存起来的外部机构类型和类别 读取外部机构的下拉框
+              extOrgType = extOrgType == 'undefined' ? '' : extOrgType;
+              extOrgCls = extOrgCls == 'undefined' ? '' : extOrgCls;
+              createExtOrg(i, extOrgCls, extOrgType, null, clickedCuacct.cuacctAttr, clickedCuacct.currency);
+            }
+          }
+          if (len) {
+            $.parser.director(form.find('div[for][for=extOrgDiv]'));
+          }
+          setTimeout(function () {
+            for (var i = 0; i < len; i++) {
+              var extOrg = clickedCuacct.custCuacctContractHandle[i]['extOrg'];
+              var extAcct = clickedCuacct.custCuacctContractHandle[i]['extAcct'];
+              form.find('input[comboname=extOrg]').eq(i).combobox('setValue', extOrg);
+              form.find('input[name=extAcct]').eq(i).val(extAcct);
+            }
+          }, 500);
+        } else if (clickedBtn == 'cuacctLimite_form' || clickedBtn == 'cuacctLimite_form2') {
+          form.form('load', clickedCuacct);
+        }
+      }
+    }
+    /*
+     * 资金账户监管属性切换事件
+     * */
+    function changeCuacctAttr(item) {
+      var attr = item['dict_val'];
+      var form = $('#fmDiv').find('form:visible');
+      //切换资金账户属性,去检测币种是否选择了项,如果没有选择项,则去获取可开通多少个银证
+      var currencyCombo = form.find('input[comboname=currency]');
+      var currency = currencyCombo.combobox('getValue');
+      if (currency != '') {
+        createExtOrgBefore(attr, currency);
+      }
+    }
+    function changeCurrency2(item) {
+      /*  changeCurrency(item);
+       var currency = item['dict_val'];
+       var form = $('#fmDiv').find('form:visible');
+       //切换资金账户属性,去检测币种是否选择了项,如果没有选择项,则去获取可开通多少个银证
+       var attrCombo = form.find('input[comboname=cuacctAttr]');
+       var attr = attrCombo.combobox('getValue');
+       if(attr != ''){
+         createExtOrgBefore(attr,currency);
+       } */
+    }
+    function createPayWay(isDisabledFlag) {
+      $('#payWay').remove();
+      var isDisabled = 'disabled:';
+      isDisabled += typeof (isDisabledFlag) == 'undefined' ? 'false' : 'true';
+      isDisabled += ',';
+      var form = $('#fmDiv').find('form:visible');
+      var tdWidth = form.children('table').find('td.td-h-1:visible').eq(0).outerWidth() + 1;
+      var tdWidth2 = form.children('table').find('td.td-h-2:visible').eq(0).outerWidth() + 1;
+      var tr = '<tr id="payWay">' + '<td style="text-align: right;width:' + tdWidth + 'px">支付方式：</td>' + '<td style="width:' + tdWidth2 + 'px">' + '<input class="kui-combobox" name="payWay" kui-options="' + isDisabled + 'showMessage:false,required:true,dict:\'PAY_WAY\',onSelect:changePayWay"/>' + '</td><td style="text-align: right;width:' + tdWidth + 'px"></td><td style="width:' + tdWidth2 + 'px"></td>' + '</tr>';
+      if ($('div[for][for=extOrgDiv]').length) {
+        $('div[for][for=extOrgDiv]>table').append(tr);
+      } else {
+        $('<div id="extOrgDiv" for="extOrgDiv" ><table border="0" >' + tr + '</table></div>').appendTo(form);
+      }
+    }
+    function createExtOrgBefore(attr, currency, justAddExtOrg) {
+      var orgCounts = [];
+      if (typeof (attr) != 'undefined' && typeof (currency) != 'undefined') orgCounts = getOrgCount(attr, currency);
+      $('div[for][for=extOrgDiv]').remove();
+      if (typeof (justAddExtOrg) == 'undefined') {
+        if (attr == 4) {
+          //资金监管属性=第三方支付
+          createPayWay();
+          $.parser.director($('#payWay'));
+        } else {
+          $('#payWay').remove();
+          for (var i = 0, len = orgCounts.length; i < len; i++) {
+            var extOrgCls = orgCounts[i].EXTORG_CLS;
+            var extAcctLimit = orgCounts[i].EXT_ACCT_LIMIT;
+            for (var j = 0; j < extAcctLimit; j++) {
+              createExtOrg(j, extOrgCls, null, null, attr, currency);
+            }
+          }
+        }
+      } else {
+        //支付方式选择的三方支付
+        for (var i = 0, len = orgCounts.length; i < len; i++) {
+          var extOrgCls = orgCounts[i].EXTORG_CLS;
+          var extAcctLimit = orgCounts[i].EXT_ACCT_LIMIT;
+          for (var j = 0; j < extAcctLimit; j++) {
+            createExtOrg(j, extOrgCls, null, null, attr, currency);
+          }
+        }
+      }
+      var form = $('#fmDiv').find('form:visible');
+      if (form.find('div[for][for=extOrgDiv]').length && !form.find('input[name=extOrg]:eq(0)').next('span').length) {
+        $.parser.director(form.find('div[for][for=extOrgDiv]'));
+      }
+    }
+    function createExtOrg(trId, configExtOrgCls, configExtOrgType, isDisabledFlag, attr, currency) {
+      //通过资金渠道规则表定义的外部机构类别()转换为外部机构表的类别和类型,用以读出外部机构下拉框数据和Label
+      var orgName = '', acctName = '', extOrgCls = 0, extOrgClsCondition = '', extOrgTypeCondition = '';
+      if (typeof (configExtOrgCls) != 'undefined' && configExtOrgCls != '') {
+        var bankLabel = "银行";
+        orgName = getSysDictOpt("EXT_ORG_CLS", $.trim(configExtOrgCls)) + bankLabel;
+        acctName = '银行账户';
+        extOrgCls = "'" + configExtOrgCls + "'";
+
+        extOrgClsCondition = 'EXT_ORG_CLS:' + extOrgCls;
+      } else {
+        orgName = '外部机构';
+        acctName = "外部账户";
+      }
+      //如果是支付机构,查询外部机构的时候,要传外部机构类型而非外部机构类别
+      if (typeof (configExtOrgType) != 'undefined' && configExtOrgType != '') {
+        extOrgTypeCondition = 'EXT_ORG_TYPE:' + configExtOrgType;
+      }
+      var condition = '';
+      if (extOrgClsCondition != '' && extOrgTypeCondition != '') {
+        condition = extOrgClsCondition + ',' + extOrgTypeCondition
+      } else {
+        condition = extOrgClsCondition == '' ? extOrgTypeCondition : extOrgClsCondition;
+      }
+
+      condition += ",CUACCT_ATTR:" + attr + ",CURRENCY:" + currency + ",INT_ORG:'" + G_ORG_CODE + "'";
+
+      var isDisabled = 'disabled:';
+      isDisabled += typeof (isDisabledFlag) == 'undefined' ? 'false' : 'true';
+      isDisabled += ',';
+
+      var form = $('#fmDiv').find('form:visible');
+      var tdWidth = form.children('table').find('td.td-h-1:visible').eq(0).outerWidth() + 1;
+      var tdWidth2 = form.children('table').find('td.td-h-2:visible').eq(0).outerWidth() + 1;
+      var tr = '<tr>' +
+      '<td style="text-align: right;width:' + tdWidth + 'px">' + orgName + '：</td>' +
+      '<td style="width:' + tdWidth2 + 'px">' + '<input class="kui-combobox" extOrgCls="' + configExtOrgCls + '" name="extOrg" kui-options="' + isDisabled + 'showMessage:false,req:[{service:\'U0320137\',' + condition + '}],valueField:\'EXT_ORG\',textField:\'ORG_NAME\'"/>' + '</td>' +
+      '<td style="text-align: right;width: ' + tdWidth + 'px">' + acctName + '：</td>' +
+      '<td style="width:' + tdWidth2 + 'px">' + '<input class="kui-validatebox" style="width: 120px;" name="extAcct" kui-options="' + isDisabled + 'showMessage:false"/>' + '</td>' + '</tr>';
+
+      var tr1 = '<tr>' +
+      '<td class=\'td-h-1\'>银行证件类型：</td>' +
+      '<td class=\'td-h-2\'><input class="kui-combobox" name="idType" kui-options="panelHeight:150,showMessage:false"/></td>' +
+      '<td class=\'td-h-1\'>银行证件号码：</td>' +
+      '<td class=\'td-h-2\'><input class="kui-validatebox" name="bankIdCode" /></td></tr><tr>' +
+      '<td class=\'td-h-1\'>客户姓名： </td>' +
+      '<td class=\'td-h-2\'><input class="kui-validatebox" name="bankCustName"/></td>' +
+      '<td class=\'td-h-1\'></td>' +
+      '<td class=\'td-h-2\'></td>';
+
+      if ($('div[for][for=extOrgDiv]').length) {
+        $('div[for][for=extOrgDiv]>table').append(tr);
+      } else {
+        $('<div for="extOrgDiv"><table border="0">' + tr + tr1 + '</table></div>').appendTo(form);
+      }
+
+      $(form).append($('div[for][for=extOrgDiv]'));
+    }
+    function changePayWay(item, isDisabledFlag) {
+      var attr = item['dict_val'];
+      $('#payAcct,#payOrg1,#payOrg2').remove();
+      $('#extOrg,#bankAcctType').remove();
+      var isDisabled = 'disabled:';
+      isDisabled += typeof (isDisabledFlag) == 'undefined' ? 'false' : 'true';
+      isDisabled += ',';
+      if (attr == 0) {
+        //选择的保证金
+        var cuacctData = [];
+        $('#zjTabTr>table').find('tr').each(function () {
+          var trCache = $(this).data('cuacctCache');
+          //支付方式选择保证金的,则取现货 人民币的主资金帐号
+          if (trCache.cuacctAttr == '0' && trCache.currency == '0' && trCache.cuacctType == 0) {
+            cuacctData.push({ id: trCache.cuacctCode, txt: trCache.cuacctCode });
+          }
+        });
+        $('#payWay').find('td:eq(2)').text('资金账户：');
+        $('#payWay').find('td:eq(3)').html('').append('<input class="kui-combobox" name="cuacctCode"  kui-options="showMessage:false,textField:\'txt\',valueField:\'id\',required:true"/>');
+        var form = $('#fmDiv').find('form:visible');
+        $.parser.director($('#payWay').find('td:eq(3)'));
+        form.find('input[comboname=cuacctCode]').combobox('loadData', cuacctData);
+      } else if (attr == 1) {
+        //选择的第三方支付,创建支付机构下拉框
+        $('#payWay').find('td:eq(2)').text('支付机构：');
+        $('#payWay').find('td:eq(3)').html('').append('<input class="kui-combobox" name="payOrg" kui-options="' + isDisabled + 'showMessage:false,required:true,req:[{service:\'U0320137\',EXT_ORG_TYPE:9}],valueField:\'EXT_ORG\',textField:\'ORG_NAME\',onSelect:changePayOrg"/>');
+
+        $.parser.director($('#payWay').find('td:eq(3)'));
+      }
+    }
+    function delCuacct() {
+      var clickTr = $('#zjTabTr>table').find('tr.tr-click');
+      var cuacctCache = clickTr.data('cuacctCache');
+      if (cuacctCache['opType'] == 1) {
+        var tmpCuacct = cuacctCache['tmpCuacct'];
+        var currency = cuacctCache['currency'];
+        var tdWidth = clickTr.children('td:eq(0)').width();
+
+        if ($('#zjTabTr>table').find('tr[parentCuacct=' + tmpCuacct + ']').not(clickTr).length) {
+          alert('该资金账户开通了子资金账户,请先删除子资金账户');
+          return;
+        } else {
+          clickTr.remove();
+          //判断是否开通了多币种,开通了多币种的,改变币种行第一列的格式
+          $('#zjTabTr>table').find('tr[tmpCuacct=' + tmpCuacct + '][currency!=' + currency + ']:first').each(function () {
+            $(this).children('td:eq(0)').css("textIndent", "11px").text($(this).attr('cuacct')).end().children('td').width(tdWidth);
+          });
+          var form = $('#fmDiv').find('form:visible');
+          if (form.attr('id') == 'modifyCuacct_form') {
+            beforeClickCuacctOrBtn($('a[for=addCuacct_form][addFor=main]'));
+          }
+        }
+      } else {
+        alert("只能删除新增的资金账户");
+        return;
+      }
+    }
+    function changePayOrg(item, isDisabledFlag) {
+      var payOrg = item['ORG_ID'];
+      //根据支付机构代码,获取该支付机构的外部机构类别
+      var orgInfo = commonRequest({
+        service: 'U0320137', EXT_ORG: payOrg
+      });
+      var isDisabled = 'disabled:';
+      isDisabled += typeof (isDisabledFlag) == 'undefined' ? 'false' : 'true';
+      isDisabled += ',';
+      $('#extOrg,#payAcct,#bankAcctType').remove();
+      var form = $('#fmDiv').find('form:visible');
+      var tdWidth = form.children('table').find('td.td-h-1:visible').eq(0).outerWidth() + 1;
+      var tdWidth2 = form.children('table').find('td.td-h-2:visible').eq(0).outerWidth() + 1;
+      var tr;
+      if (orgInfo[0]['EXT_ORG_CLS'] == 17) { //选择的代理支付 银联 银通
+        var tr = $('<tr id="extOrg">' + '<td style="text-align: right;width:' + tdWidth + 'px">支付银行：</td>' + '<td width="' + tdWidth2 + '">' + '<input class="kui-combobox" extOrgCls="10" name="bankCode" kui-options="' + isDisabled + 'showMessage:false,req:[{service:\'U0320137\',EXT_ORG_CLS:10}],valueField:\'EXT_ORG\',textField:\'ORG_NAME\'"/>' + '</td>' + '<td style="text-align: right;width:' + tdWidth + 'px">银行账户：</td> ' + '<td width="' + tdWidth2 + '"> <input class="kui-validatebox" style="width: 120px;" name="bankAcct" kui-options="' + isDisabled + 'showMessage:false"/></td>' + '</tr>' + '<tr id="bankAcctType">' + '<td style="text-align: right;width:' + tdWidth + 'px">银行账户类型：</td>' + '<td width="' + tdWidth2 + '">' + '<input class="kui-combobox" extOrgCls="10" name="bankAcctType" kui-options="' + isDisabled + 'showMessage:false,dict:\'BANK_ACCT_TYPE\'"/>' + '</td>' + '</tr>');
+        $('table:eq(1)', form).append(tr);
+      } else { //选择的财付通等自主支付,需要填支付账户
+        var tr = $('<tr id="payAcct">' + '<td class="td-h-1">支付账户：</td> <td class="td-h-2"> <input class="kui-validatebox" style="width: 120px;" name="payAcct" kui-options="' + isDisabled + 'showMessage:false"/></td>' + '</tr>');
+        $('table:eq(1)', form).append(tr);
+      }
+      $.parser.director(tr);
+    }
+    var count = 1;
+    function saveForm() {
+      var currForm = $('#fmDiv').find('form:visible');
+      var formId = currForm.attr('id');
+      var cuaccts = [], cuacct = {};
+      var infos = currForm.serializeArray();
+      var exts = [], ext = {};
+      if (!visibleCurrenForm(currForm)) {
+        alert('请将当前表单填写完整');
+        return;
+      }
+      for (var i = 0, len = infos.length; i < len; i++) {
+        if (infos[i]['name'] != 'extOrg' && infos[i]['name'] != 'extAcct' && infos[i]['name'] != 'payWay') {
+          cuacct[infos[i]['name']] = infos[i]['value'];
+        } else {
+          break;
+        }
+      }
+      if (cuacct.cuacctAttr != '4') {
+        //监管属性为非第三方支付的,直接读取外部机构拼接
+        currForm.find('input[comboname=extOrg]').each(function () {
+          ext = {};
+          var extOrgCls = $(this).attr('extOrgCls'); //读取外部机构下拉框的属性,外部机构类别,用资金渠道规则表定义出来的,则在创建该下拉框时,会加此属性,非定义出来的下拉框需手动添加
+          var extOrgType = $(this).attr('extOrgType');
+          var extOrgTarget = $(this).next('span.combo').find('input[name=extOrg]');
+          var extOrgVal = extOrgTarget.val();
+          if (extOrgVal != '') {
+            var extAcctVal = $(this).parent('td').next().next('td').find('input[name=extAcct]').val();
+            ext.extOrgCls = extOrgCls;
+            ext.extOrg = extOrgVal;
+            ext.extOrgType = extOrgType;
+            ext.extOrgName = $(this).combobox('getText');
+            ext.extAcct = extAcctVal;
+            exts.push(ext);
+          }
+        });
+        cuacct['custCuacctContractHandle'] = exts;
+      } else {
+        //监管属性为三方支付的,直接把表单元素的值赋给外部机构的信息数组
+        var thirdPayInfo = {};
+        for (var i = 0, len = infos.length; i < len; i++) {
+          thirdPayInfo[infos[i]['name']] = infos[i]['value'];
+        }
+        cuacct['custCuacctContractHandle'] = [thirdPayInfo];
+      }
+      if (formId.substring(0, 3) == 'add') {
+        cuacct['opType'] = 1;
+        if (cuacct.parentCuacctCode == '' || cuacct.parentCuacctCode == 'undefined' || typeof (cuacct.parentCuacctCode) == 'undefined') cuacct.parentCuacctCode = 0;
+        cuacct['cuacctCode'] = "new" + (count++);
+        if (formId == 'addCurrency_form') {
+          //如果增加币种,新增币种的资金账号为点击行(主资金账户)的资金帐号
+          var clickedTr = $('#zjTabTr>table').find('tr.tr-click');
+          var clickedCuacct = clickedTr.data('cuacctCache');
+          cuacct['cuacctCode'] = clickedCuacct.cuacctCode;
+          cuacct['tmpCuacct'] = clickedCuacct.tmpCuacct;
+          cuacct['parentCuacctCode'] = clickedCuacct.parentCuacctCode;
+          cuacct['cuacctAttr'] = clickedCuacct['cuacctAttr'];
+          cuacct['cuacctCls'] = clickedCuacct['cuacctCls'];
+          cuacct['cuacctGrp'] = clickedCuacct['cuacctGrp'];
+          cuacct['cuacctLvl'] = clickedCuacct['cuacctLvl'];
+          cuacct['intOrg'] = clickedCuacct['intOrg'];
+          var openFlag = isCanOpen(cuacct['cuacctAttr'], cuacct['currency']);
+          if (openFlag.flag) {
+            appendDomToTable(cuacct, true);
+          } else {
+            alert('该监管属性和币种的资金账户,最多只允许开通' + openFlag.canOpenCount + ',目前已开通' + openFlag.opendCount + ",不能再开通");
+          }
+        } else {
+          //新增资金账户(无论主与子),一律取新的资金帐号
+          var openFlag = isCanOpen(cuacct['cuacctAttr'], cuacct['currency']);
+          if (openFlag.flag) {
+            cuacct['tmpCuacct'] = getVMSeq();
+            if (cuacct.parentCuacctCode == 0) appendDomToTable(cuacct, false); else appendDomToTable(cuacct, true);
+          } else {
+            alert('该监管属性和币种的资金账户,最多只允许开通' + openFlag.canOpenCount + ',目前已开通' + openFlag.opendCount + ",不能再开通");
+          }
+        }
+        //新增完后刷新表单
+        var btn;
+        if (currForm.attr('for')) {
+          btn = $('#zjzhBtn').find('a[for=' + formId + '][addFor=' + currForm.attr("for") + ']');
+        } else btn = $('#zjzhBtn').find('a[for][for=' + formId + ']');
+        beforeClickCuacctOrBtn(btn);
+      } else {
+        //点击的是非新增资金账户和币种的表单
+        var clickedTr = $('#zjTabTr>table').find('tr.tr-click');
+        var clickedCuacct = clickedTr.data('cuacctCache');
+        var opType = clickedCuacct['opType'];
+        var cuacctInfo = $.extend({}, clickedCuacct, cuacct);
+        modifyDomToTable(cuacctInfo);
+      }
+      flushCuacctsData();
+    }
+    function flushCuacctsData() {
+      cuacctsData = [];
+      var cuaccts = [];
+      $('#zjTabTr>table').find('tr.main').each(function () {
+        var cuacctCache = $(this).data('cuacctCache');
+        if ($.inArray(cuacctCache.tmpCuacct, cuaccts) == -1) {
+          cuaccts.push(cuacctCache.tmpCuacct);
+          cuacctsData.push({ cuacctCode: cuacctCache.cuacctCode, tmpCuacct: cuacctCache.tmpCuacct, parentCuacctCode: cuacctCache.parentCuacctCode, cuacctAttr: cuacctCache.cuacctAttr, currency: cuacctCache.currency });
+        }
+      });
+      if ($('#trdIframe').contents().find('#nav').find('li.lf-nav-dis').length)
+        $('#trdIframe').contents().find('#nav').find('li.lf-nav-dis').click();
+    }
+    function isCanOpen(attr, currency) {
+      var flag = true;
+      var canOpenCount = 0;
+      for (var i = 0, len = cuacctNumbers.length; i < len; i++) {
+        if (cuacctNumbers[i]['CUACCT_ATTR'] == attr && cuacctNumbers[i]['CURRENCY']) {
+          canOpenCount = cuacctNumbers[i]['CUACCT_LIMIT'];
+          var opendCount = $('#zjTabTr>table').find('tr[cuacctAttr=' + attr + '][currency=' + currency + ']').length;
+          opendCount == 'undefined' ? 0 : opendCount;
+          if (canOpenCount <= opendCount) {
+            flag = false;
+            break;
+          }
+        }
+      }
+      return { 'flag': flag, 'canOpenCount': canOpenCount, 'opendCount': opendCount };
+    }
+    function filterColumns() {
+      return ['bizSno', 'opType'];
+    }
+    function getExtOrgIsModify(trExtCache, formExts) {
+      //比对外部机构数组是否有改动,此方法的前提是他们的个数一致
+      var flag = false;
+      for (var i = 0, len = trExtCache.length; i < len; i++) {
+        var extInfo1 = trExtCache[i];
+        var extInfo2 = formExts[i];
+        for (var j in extInfo1) {
+          if (j == 'bizSno') continue;
+          if (extInfo1[j] = !extInfo2[j]) {
+            flag = true;
+          }
+        }
+      }
+      return flag;
+    }
+    function commitCuaccts() {
+      var trs = $('#zjTabTr>table').children('tr');
+      var reqs = [];
+      $('#zjTabTr>table').find('tr').each(function () {
+        var cuacctCache = $(this).data('cuacctCache');
+        var cuacct = $.extend({}, cuacctCache);//对象拷贝
+        cuacct.cuacctCode = cuacctCache.tmpCuacct;
+        cuacct.bizSno = G_BIZ_SNO;
+        cuacct.custCode = G_USER_CODE;
+        var opType = cuacctCache['opType'];
+        if (opType != '0') { //新增的 和修改的 才调用开户接口
+          var extOrgs = typeof (cuacctCache.custCuacctContractHandle) == 'undefined' ? [] : cuacctCache.custCuacctContractHandle;
+          if (extOrgs.length) {  //有外部机构的
+            for (var i = 0, len = extOrgs.length; i < len; i++) {
+              var service = $.extend({}, { service: 'U1510020' }, extOrgs[i], cuacct);
+              reqs.push(service);
+            }
+          } else { //没有外部机构的 只开资金户的
+            var a = $.extend({}, { service: 'U1510020' }, cuacct);
+            reqs.push(a);
+          }
+        }
+      });
+
+
+    }
+    function selectTab(title, index) {
+      if (index == 1) {
+        var cuacctTable = $('#zjTabTr>table');
+        var clickedTr = cuacctTable.find('tr.tr-click');
+        if (!clickedTr.length) {
+          alert('请在左侧表格中选择资金账户');
+          $('#tabs').tabs('select', 0);
+          return;
+        } else {
+          var clickedCuacct = clickedTr.data('cuacctCache');
+          var cuacctCurrencyLedges = typeof (clickedCuacct.cuacctCurrencyLedgerHandle) == 'undefined' ? [] : clickedCuacct.cuacctCurrencyLedgerHandle;
+          createFlztr(cuacctCurrencyLedges);
+        }
+      }
+    }
+    function createFlztr(cuacctCurrencyLedges) {
+      var flzTab = $('#flzTabTr>table');
+      flzTab.empty();
+      var tdWidth = $('#flzTabHead').find('td:eq(0)').width();
+      for (var i = 0, len = cuacctCurrencyLedges.length; i < len; i++) {
+        var ledge = cuacctCurrencyLedges[i];
+        var tr = $('<tr class="white" cuacctCode="' + ledge.cuacctCode + '" currency="' + ledge.currency + '" ledgerSn="' + ledge.ledgerSn + '">' + '<td style="width:' + tdWidth + 'px">' + ledge.cuacctCode + '</td>' + '<td style="width:' + tdWidth + 'px">' + getSysDictOpt("CURRENCY", ledge.currency) + '</td>' + '<td style="width:' + tdWidth + 'px">' + ledge.ledgerName + '</td>' + '<td style="width:' + tdWidth + 'px">' + getSysDictOpt("USE_CODE", ledge.useCode) + '</td>' + '</tr>')
+        flzTab.append(tr);
+        tr.data('ledgeCache', ledge);
+      }
+    }
+  </script>
+</head>
+<body style="overflow-x:hidden;">
+  <div class="out-box">
+    <div class="rlt_top" style="padding-top:8px; height: 20px;">
+      <div class="rlt_open_tip" id="rltTit" onclick="rltPicEvn()"
+           style="float: right; width: 90px; height: 20px;"><span style="color: #3380c1">显示关系图</span></div>
+    </div>
+    <div class="rlt_frm" id="rltPic" style="display: none;">
+      <iframe src="" name="ifrm" id="ifrm" frameborder="no" border="0"
+              marginwidth="0" marginheight="0" width="100%" height="340"
+              scrolling="auto"></iframe>
+    </div>
+    <div id="zjTab"
+         style="position: relative; float: left; border: 1px solid #addaf7; height: 225px">
+      <div id="zjTabHead" class="dv-3" style="height: 30px;">
+        <table cellspacing="0" cellpadding="0" class="table-header">
+          <tr>
+            <td>资金账户</td>
+            <td>币种</td>
+            <td>监管属性</td>
+            <td>账户状态</td>
+          </tr>
+        </table>
+      </div>
+      <div id="zjTabTr" class="dv-3" style="overflow-y: auto">
+        <table cellspacing="0" cellpadding="0" class="table-body" style="cursor: pointer; width:100%;"></table>
+      </div>
+    </div>
+    <div id="fmDiv" tabindex="1" style="position: relative; float: left; width: 422px; border: 1px solid #addaf7; height: 225px;">
+      <div id="loadingDiv" class="loading hide"></div>
+      <div id="tabs" class="kui-tabs" kui-options="onSelect:selectTab" style="height: 225px;overflow-y: auto">
+        <div id="tabs1" title="账户详情">
+          <div id="tabsFormView" style="height: 184px; overflow-y: auto">
+            <form id="modifyCuacct_form" class="kui-form" style="display: none">
+              <table border="0">
+                <tr>
+                  <td class="td-h-1">资金账号：</td>
+                  <td class="td-h-2">
+                    <input class="kui-validatebox"
+                           id="cuacctCode" name="cuacctCode"
+                           kui-options="disabled:'disabled'" style="width: 120px;" />
+                  </td>
+                  <!-- <td class="td-h-1" id="mainCuacctTd3" style="display: none">主资金账户：</td>
+                  <td class="td-h-2" id="mainCuacctTd4" style="display: none"></td> -->
+                </tr>
+                <tr>
+                  <td class="td-h-1">监管属性：</td>
+                  <td class="td-h-2">
+                    <input class="kui-combobox"
+                           name="cuacctAttr"
+                           kui-options="disabled:'disabled',showMessage:false,textField:'dict_des',valueField:'dict_val',dict:'CUACCT_ATTR',required:true" />
+                  </td>
+                  <td class="td-h-1">币种：</td>
+                  <td class="td-h-2">
+                    <input class="kui-combobox"
+                           name="currency"
+                           kui-options="disabled:'disabled',showMessage:false,editable:false,disabled:true,dict:'CURRENCY',required:true,onSelect:changeCurrency" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-h-1">存管标识：</td>
+                  <td class="td-h-2"><input class="kui-combobox" name="cuacctDmf" kui-options="showMessage:false,editable:false,disabled:true,textField:'dict_des',valueField:'dict_val',data:[{dict_val:0,dict_des:'非存管'},{dict_val:1,dict_des:'主存管'},{dict_val:2,dict_des:'辅存管'}]" /></td>
+
+                  <td class="td-h-1">利率类别：</td>
+                  <td class="td-h-2">
+                    <input class="kui-combobox"
+                           name="rateCls"
+                           kui-options="disabled:'disabled',required:true,showMessage:false,valueField:'RATE_CLS',textField:'RATE_NAME'" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-h-1">内部机构：</td>
+                  <td class="td-h-2">
+                    <input class="kui-combotree"
+                           name="intOrg"
+                           kui-options="disabled:'disabled',showMessage:false,width:123,animate:true,collapse:true,req:[{service:'U0320138'}],multiple:false,panelWidth:250,panelHeight:250,conf:{nodeId:'ORG_CODE',nodeName:'ORG_CODE,ORG_NAME',treeType:'1',parNode:'PAR_ORG'}" />
+                  </td>
+
+                  <td class="td-h-1">账户类别：</td>
+                  <td class="td-h-2">
+                    <input class="kui-combobox"
+                           name="cuacctCls"
+                           kui-options="disabled:'disabled',required:true,showMessage:false" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-h-1">账户组别：</td>
+                  <td class="td-h-2">
+                    <input class="kui-combobox"
+                           name="cuacctGrp"
+                           kui-options="disabled:'disabled',required:true,showMessage:false" />
+                  </td>
+
+                  <td class="td-h-1">账户级别：</td>
+                  <td class="td-h-2">
+                    <input class="kui-combobox"
+                           name="cuacctLvl"
+                           kui-options="disabled:'disabled',required:true,showMessage:false" />
+                  </td>
+                </tr>
+              </table>
+
+            </form>
+          </div>
+        </div>
+        <!-- 屏蔽分类账 -->
+        <!--
+        <div id="tabs2" title="分类账">
+          <div id="flzTabHead" class="dv-3" style="height: 30px;">
+            <table cellspacing="0" cellpadding="0" width="100%">
+              <tr style="min-width:108px;background-color: #E9F6FF;color: #3380c1;font-size: 13px;height: 28px;text-align: center;">
+                <td style="min-width:108px;border-right: 1px solid #acd8f8;border-bottom: 1px solid #acd8f8;font-weight:bold;">资金账户</td>
+                <td style="min-width:108px;border-right: 1px solid #acd8f8;border-bottom: 1px solid #acd8f8;font-weight:bold;">币种</td>
+                <td style="min-width:108px;border-right: 1px solid #acd8f8;border-bottom: 1px solid #acd8f8;font-weight:bold;">分类名称</td>
+                <td style="min-width:107px;border-bottom: 1px solid #acd8f8;font-weight:bold;">账户用途</td>
+              </tr>
+            </table>
+          </div>
+          <div id="flzTabTr" class="dv-3" style="height: 130px;overflow-y: auto">
+            <table cellspacing="0" cellpadding="0" style="cursor: pointer"></table>
+          </div>
+        </div>
+         -->
+      </div>
+    </div>
+    <!--交易账户操作--> <!--<div>-->
+    <div id="trdIframeDiv"
+         style="position: relative; float: left; margin-top: 2px; overflow-y: auto;">
+      <iframe src="" name="trdIframe" id="trdIframe" frameborder="no"
+              border="0" marginwidth="0" marginheight="0" width="98%" height="100%"
+              scrolling="none"></iframe>
+    </div>
+  </div>
+</body>
+</html>

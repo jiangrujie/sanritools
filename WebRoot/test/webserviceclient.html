@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+  </head> 
+  <body class="full-window">
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript">
+    	var sendData = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:q0="sanriWebservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance"><soapenv:Body><q0:query><arg0>sanri1993</arg0></q0:query></soapenv:Body></soapenv:Envelope>';
+    	$.ajax({
+    	  type:'post',
+    	  url:'http://127.0.0.2/queryUser?wsdl',
+    	  data:sendData,
+    	  contentType:'text/xml;charset=UTF-8',
+    	  dataType:'xml',
+    	  success:function(d){
+    	    logger.debug(d);
+    	  },
+    	  error:function(e){
+    	    logger.debug(e);
+    	  }
+    	});
+    </script>
+  </body>
+</html>

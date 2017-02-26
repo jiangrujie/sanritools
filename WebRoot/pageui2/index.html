@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+
+<link rel="stylesheet" href="../assert/normalize-4.11.css" />
+<link rel="stylesheet" href="../assert/font-awesome.min.css" />
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+
+<link rel="stylesheet" href="../assert/appbase.css" />
+<link rel="stylesheet" href="css/treeview.css" />
+<link rel="stylesheet" href="css/layout.css" />
+</head>
+<body class="full-window">
+  <div class="top">
+    <div class="logo">
+      <img src="images/index/logo.png" /> 吉林环保网格化管理
+    </div>
+    <ul class="right-element clearfix">
+      <li class="date">今天日期：<span id="nowtime"></span><span id="week"></span>
+      </li>
+      <li class="user">admin,您好</li>
+      <li class="logout">安全退出</li>
+    </ul>
+  </div>
+  <div class="page-inner-wrap clearfix">
+    <ul id="treeview" class="treeview"></ul>
+    <div class="page-main">
+      <div class="path">
+        <div class="path-breadcrumb">
+          <span class="path-icon index_hover"></span>
+          <ul id="breadcrumb">
+            <li>首页</li>
+            <li class="fa fa-chevron-right"></li>
+            <li>某某页面</li>
+          </ul>  
+        </div>
+        <div class="right-element">
+          <div class="my-event">
+            <span>我的事件</span>
+            <b class="event_count">0</b>
+          </div>
+          <div class="input-group search-box">
+            <input class="form-control " />
+            <span class="input-group-addon search"><i class="fa fa-search"></i> 搜索</span>
+          </div>
+        </div>
+      </div>
+      <iframe id="mainframe"></iframe>
+    </div>
+  </div>
+  <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+  <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="plugins/layer/layer.js"></script>
+
+  <script type="text/javascript" src="../assert/reset.js"></script>
+  <script type="text/javascript" src="../assert/appbase.js"></script>
+  <script type="text/javascript" src="js/treeview.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

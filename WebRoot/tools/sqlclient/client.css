@@ -1,0 +1,98 @@
+.page-wrap{
+  position: relative;
+}
+.page-wrap .page-left{
+  width: 360px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.page-wrap .main-wrap{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 360px;
+  right: 0;
+}
+.page-wrap .main-wrap .sql-cmd{
+  padding-left: 30px;
+}
+
+.page-wrap .main-wrap .sql-input{
+  height: 220px;
+  font-size: 18px;
+  font-family: monospace;
+}
+
+.page-wrap .page-left input.table-search {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  height: 35px;
+  display: block;
+  width: 100%;
+  padding-left: 5px;
+}
+
+.page-left .table-mark{
+  color: #f40;
+  font-style: normal;
+}
+.page-left .button-group.ztree-cmd{
+  display: block;
+  padding: 1px 0px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #8c8c8c;
+  padding-right: 5px;
+}
+.page-left .button-group.ztree-cmd .btn{
+  float: right;
+  background: none;
+  border: none;  
+  border-radius:4px;
+}
+.page-left .button-group.ztree-cmd .btn:hover{
+  background-color: #ddd;
+  border-color: #ccc;
+  border-width: 1px;
+}
+.page-left .button-group.ztree-cmd .btn:first-child {
+}
+.page-left .button-group.ztree-cmd .btn:last-child{
+}
+/*表格列表的高度需要计算*/
+.page-left .tables-list{
+  display: block;
+  padding: 0;
+  overflow: scroll;
+}
+
+.main-wrap .quickly-sql{
+  line-height: 35px;
+}
+.main-wrap .quickly-sql .quickly-label{
+  color: #333;
+  display: inline-block;
+  padding: 0 10px;
+}
+.main-wrap .quickly-sql .sql-content{
+  display: inline-block;
+}
+
+.main-wrap .quickly-sql .sql-content .content{
+  padding: 0 15px;
+  display: inline-block;
+}
+.main-wrap .quickly-sql .sql-content .select-table{
+  line-height: 20px;
+}
+.result-set-wrap{
+ position: relative; 
+}
+.result-set-wrap .tables-result-set{
+  overflow: scroll;
+  position: absolute;
+  top: 42px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

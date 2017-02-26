@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../assert/appbase.css">
+    <link rel="stylesheet" href="moveselect.css">
+</head>
+<body>
+
+    <div id="test"></div>
+    <div id="testmulti"></div>
+	<div id="testmulti2"></div>
+
+    <script src="../../assert/jquery.1.9.1.min.js" type="text/javascript"></script>
+	<script src="../jquery.draggable.js" type="text/javascript"></script>
+    <script src="../../assert/reset.js"  type="text/javascript"></script>
+    <script src="../../assert/appbase.js" type="text/javascript"></script>
+    <script src="moveselect.js" type="text/javascript"></script>
+
+    <script>
+
+        $(function(){
+            $('#test').moveselect({
+                title:'测试首次',
+                top:50,
+                left:100,
+                data:[{text:'测试1',id:1},{text:'测试2',id:2}]
+            });
+            $('#testmulti').moveselect({
+                title:'测试第二个',
+                top:50,
+                left:300,
+                data:[{text:'测试1',id:1},{text:'测试2',id:2}]
+            });
+        })
+    </script>
+</body>
+</html>

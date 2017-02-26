@@ -1,0 +1,79 @@
+.page-wrap {
+  padding: 15px;
+  position: relative;
+}
+
+.operator {
+  height: 50px;
+  border-bottom: 2px solid #03a9f4;
+}
+
+.operator .button {
+  float: right;
+  font-size: 15px;
+  padding: 20px 0 0 15px;
+}
+
+.operator .button span {
+  display: inline-block;
+  padding: 3px 15px;
+  background-color: #03a9f4;
+  border-top-left-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  border-top-right-radius: 5px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.table-wrap {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+/*表格样式*/
+table {
+  width: 1107px;
+  border-collapse: collapse;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  table-layout: fixed;
+}
+
+table th,table td {
+  height: 43px;
+  padding: 5px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+th {
+  border-bottom: 2px solid #ccc;
+  background: linear-gradient(#abe4fe, #e7f6fc);
+}
+
+td {
+  border-bottom: 1px solid #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #fff;
+}
+
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+.thumbnail {
+  width: 70px;
+  height: 35px;
+  display: inline-block;
+}
+
+.mypage {
+  position: absolute;
+  right: 15px;
+}

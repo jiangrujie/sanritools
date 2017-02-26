@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+
+<link rel="stylesheet" href="../../assert/normalize-4.11.css" />
+<link rel="stylesheet" href="../../plugins/jsonview/jquery.jsonview.min.css" />
+<link rel="stylesheet" href="../../assert/font-awesome.min.css" />
+<link rel="stylesheet" href="../../assert/appbase.css" />
+<style type="text/css">
+  .button-group{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #e7e7e7;
+    z-index: 2;
+  }
+  .button-group .btn-default{
+    background-color: #e7e7e7;
+  }
+  .json-view{
+    margin-top: 35px;
+  }
+</style>
+</head>
+<body>
+  <div class="button-group">
+    <button class="btn btn-default" id="expand">展开/折叠</button>
+  </div>
+  <div id="jsonview" class="json-view"></div>
+  <script type="text/javascript" src="../../assert/jquery.1.9.1.min.js"></script>
+  <script type="text/javascript" src="../../plugins/jsonview/jquery.jsonview.min.js"></script>
+  <script type="text/javascript" src="../../assert/reset.js"></script>
+  <script type="text/javascript" src="../../assert/appbase.js"></script>
+  <script type="text/javascript">
+  	(function(){
+  	  var jsonString = $(parent.document).find('#response').text();
+  	  $('#jsonview').JSONView(jsonString);
+  	  
+  	  $('#expand').click(function(){
+  	    $('#jsonview').JSONView('toggle');
+  	  });
+  	})()
+  </script>
+</body>
+</html>

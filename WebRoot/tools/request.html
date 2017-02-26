@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../plugins/icheck/custom.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <link rel="stylesheet" href="../plugins/autocomplete/jquery.autocomplete.css" />
+    <link rel="stylesheet" href="request/request.css" />
+  </head> 
+  <body class="full-window">
+    <div class="page-wrap fit clearfix">
+       <div class="left-wrap">
+        <div class="column-input" id="columnInput">
+          <textarea ></textarea>
+        </div>
+        <div class="button-group column-cmd" id="columnCmd">
+          <div class="btn btn-default">日期格式:<input type="text" id="dateFormat" value="yyyy-MM-dd" style="width: 90px;"></div>
+          <button class="btn btn-default" event="_2aB">下划线转驼峰</button>
+          <button class="btn btn-default" event="uppercase">全部大写</button>
+          <button class="btn btn-default" event="lowercase">全部小写</button>
+          <button class="btn btn-default" event="toJson">json生成</button>
+          <button class="btn btn-default" event="getColumn" title="第一个输入框是分隔符,第二个输入框是要在字段两边加引号,只支持单引和双引">获取字段 
+            <input type="text" class="split" value="," style="width: 15px;">
+            <input type="text" class="quoat" value="'" style="width: 15px;">
+          </button>
+        </div>
+        <ul class="column-type-match" id="typeMatch">
+        </ul>
+      </div>
+      <div class="request-main">
+        <div class="request-url" id="requestUrl">
+          <input type="text" name="method" value="POST" style="width: 40px;">
+          <span class="jsonp" title="选中后将用 jsonp 形式发送跨域 请求,后台返回值有要求,不选的话以普通 ajax 发送请求,如果需要跨域需同时在浏览器和后台设置 ;浏览器:--disable-web-security,后台:response.addHeader('Access-Control-Allow-Origin', '*');">
+            <label>jsonp:</label><input name="isJsonp" type="checkbox" checked="checked" >
+          </span>
+          <input type="text" name="url" placeholder="输入请求路径" value="http://127.0.0.1:8080/sanritools/jdbc/tablesp"  style="width: 510px;">
+          <input type="button" value="请求" class="submit" />
+        </div>
+        <div class="request-params" id="request">
+          <textarea ></textarea>
+        </div>
+        <div class="button-group" id="responseOpts">
+          <button class="btn btn-default" event="clean">清空</button>
+          <button class="btn btn-default" event="jsonview">以 json 形式查看</button>
+        </div>
+        <div class="response-body" id="response">
+          
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../assert/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../plugins/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="../plugins/layer/layer.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="../assert/generate.js"></script>
+    <script type="text/javascript" src="../plugins/autocomplete/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="request/request.js"></script>
+  </body>
+</html>

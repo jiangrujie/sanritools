@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <style type="text/css">
+    	.panel{
+    		width: 300px;
+    		height: 200px;
+    		border: 1px solid #ddd;
+    		position: fixed;
+    		z-index: 2;
+    		right: 0;
+    	}
+    	.panel .head{
+    		height:40px;
+    		background-color: #e7e7e7;
+    		border-bottom: 1px dotted blue;
+    	}
+    </style>
+  </head> 
+  <body >
+	<div class="panel" id="movePanel">
+		<div class="head"></div>
+		<div class="body"></div>
+		<iframe src="about:blank" frameborder=0 style="height: 100%; width: 100%; position: absolute; left: 0px; z-index: -1; top: 0px; scrolling: no"></iframe>
+	</div>
+	<div id="unityPlayer"></div>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="jquery.draggable.js"></script>
+    <script type="text/javascript" src="d3/UnityObject2.js"></script>
+    <script type="text/javascript">
+   		var config = {
+   			width: 960, 
+   			height: 600,
+   			params: { enableDebugging:"0" }
+   		};
+  		var u3d = new UnityObject2(config);
+    	$(function(){
+    		$('#movePanel').draggable({
+    			handle:'>.head'
+    		});
+    		
+   			u3d.observeProgress(function (progress) {
+   				switch(progress.pluginStatus) {
+					case "broken":
+						logger.debug("u3d 坏了");
+						break;
+					case "missing":
+						logger.debug("没有安装 u3d");
+						break;
+					case "installed":
+						logger.debug("3d 已经安装 ");
+						break;
+   				}
+   			});
+   			u3d.initPlugin(jQuery("#unityPlayer")[0], "d3/RealtimeLocation2.unity3d");
+    	});
+    	
+    	function onUnityStarted(){
+    		logger.debug('调用时间');
+    		var param = '{"runMode":1,"baseUrl":"root","personType":0}';
+    	    u3d.getUnity().SendMessage("Global","initAppParams",param);
+    	    
+    	    var data = '{"floorId":1,"floorScene":"index"}';
+    	    u3d.getUnity().SendMessage("Global","LoadScene",data);
+    	}
+    </script>
+  </body>
+</html>

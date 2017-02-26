@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <link rel="stylesheet" href="chosen.min.css" />
+    <style type="text/css">
+      .all-greens{
+        height: 100px;
+        overflow-y:scroll;
+      }
+      .all-greens li{
+        float: left;
+        padding: 0 15px;
+      }
+      .all-greens li a{
+        display:inline-block;
+        padding:0 8px;
+        line-height: 1.5;
+        border: 1px solid #e8e8e8;
+        border-radius: 4px;
+      }
+      .all-greens li a:HOVER {
+       border-color: #f40; 
+      }
+      .all-greens li.selected a{
+        background-color: orange;
+        border-color: #f40;
+      }
+      .all-greens li.selected a:HOVER {
+        background-color: pink;
+        border-color: #333;
+      }
+    </style>
+  </head> 
+  <body class="full-window">
+    <form class="simple-form" id="greeneditform">
+      <div class="form-row">
+        <label>名称:</label>
+        <input type="text" name="name" class="simple-input"/>
+      </div>
+      <div class="form-row">
+        <label>味道:</label>
+        <select dict="tastes" name="taste"></select>
+      </div>
+      <div class="form-row">
+        <label>需要的菜:</label>
+      </div>
+      <ul id="allgreens" class="all-greens clearfix"></ul>
+      <div class="form-row">
+        <label>烹饪序列:</label>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" >
+        <span class="input-group-addon addQueue"><i class="fa fa-plus" ></i></span>
+      </div>
+    </form>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.validate.min.js"></script>
+    <script type="text/javascript" src="messages_zh.js"></script>
+    <script type="text/javascript" src="greenedit.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <!-- 页面上的键值对处理 -->
+    <style type="text/css">
+      .page-wrap{
+        width: 840px;
+        height: 400px;
+        background-color: #e7e7e7;
+        position: relative;
+        top: 50px;
+        left: 200px;
+      }
+      
+      .form-input{
+        background-color: #e7e7e7;
+      }
+    </style>
+  </head> 
+  <body class="full-window">
+    <div class="page-wrap">
+      <div class="form-box">
+        <div class="form-group-inline">
+          <label class="form-label">时间:</label>
+          <div class="form-text" title="2016-03-09 10:54:30">2016-03-09 10:54:30</div>
+        </div>
+        <div class="form-group-inline">
+          <label class="form-label">报警人:</label>
+          <input class="form-input require">
+        </div>
+        <div class="form-group-inline">
+          <label class="form-label">状态:</label>
+          <div class="form-text" title="未处理">未处理</div>
+        </div>
+      </div>
+      <div class="form-box">
+        <div class="form-group-inline">
+          <label class="form-label">标签:</label>
+          <div class="form-text" title="DECA01001000c14d">DECA01001000c14d</div>
+        </div>
+        <div class="form-group-inline">
+          <label class="form-label">异常类型:</label>
+          <div class="form-text" title="防区异常">防区异常</div>
+        </div>
+        <div class="form-group-inline">
+          <label class="form-label">级别:</label>
+          <div class="form-text" title="严重">严重</div>
+        </div>
+      </div>
+      <div class="form-box">
+        <div class="form-group-inline">
+          <label class="form-label">处理意见:</label>
+          <input class="form-input require" style="width: 300px;">
+        </div>
+        <div class="form-group-inline">
+          <input type="button" value="处理">
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../assert/appbase.css" />
+    <link rel="stylesheet" href="jquery.contextMenu.min.css" />
+    <link rel="stylesheet" href="scrolltabs.css" />
+    <style type="text/css">
+       .page-wrap{
+        width: 840px;
+        height: 400px;
+        background-color: white;
+        position: relative;
+        top: 50px;
+        left: 200px;
+      }
+    </style>
+  </head> 
+  <body>
+    <div class="page-wrap">
+      <!-- <div class="content-tabs">
+        <button class="tabs-nav nav-left"><i class="fa icon-backward"></i></button>
+        <div class="page-tabs clearfix">
+          <ul class="page-tabs-content">
+            <li><a href="#" >首页<i class="fa icon-remove-circle"></i></a></li>
+            <li class="selected" ><a href="#" >收件箱<i class="fa icon-remove-circle"></i></a></li>
+            <li><a href="#" >查看邮件<i class="fa icon-remove-circle"></i></a></li>
+            <li><a href="#" >表单验证<i class="fa icon-remove-circle"></i></a></li>
+            <li><a href="#" >基本表单<i class="fa icon-remove-circle"></i></a></li>
+            <li><a href="#" >高级插件<i class="fa icon-remove-circle"></i></a></li>
+            <li><a href="#" >表单向导<i class="fa icon-remove-circle"></i></a></li>
+            <li><a href="#" >文件上传<i class="fa icon-remove-circle"></i></a></li>
+            <li><a href="#" >编辑器<i class="fa icon-remove-circle"></i></a></li>
+          </ul>
+        </div>
+        <button class="tabs-nav nav-right"><i class="fa icon-forward"></i></button>
+      </div>  -->
+      <div id="navTabs"></div>
+      
+      <div class="button-group">
+        <button class="btn btn-default" id="position">定位当前 tab</button>
+      </div>
+    </div>
+    <script type="text/javascript" src="../../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../assert/reset.js"></script>
+    <script type="text/javascript" src="../../assert/appbase.js"></script>
+    <script type="text/javascript" src="jquery.ui.position.min.js"></script>
+    <script type="text/javascript" src="jquery.contextMenu.min.js"></script>
+    <script type="text/javascript" src="scrolltabs.js"></script>
+    <script type="text/javascript" src="../../assert/generate.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    	 /*var $parent = $('.page-tabs-content');
+    	 $parent.on('click','li',function(){
+    	   logger.debug('选择标签页');
+    	 });
+    	 $parent.on('click','li>a>i',function(){
+    	   logger.debug('关闭标签页');
+    	 });
+    	 
+    	 */
+    	  var gen = new Generate();
+       	var $scrollTabs =  $('#navTabs').scrolltabs({
+       	   tabs:[{id:'1',title:'abc'},
+       	         {id:'2',title:'长标题测试3'},
+       	         {id:'3',title:'长标题测试4'},
+       	         {id:'4',title:'长标题测试5'},
+       	         {id:'5',title:'长标题测试6'},
+       	         {id:'6',title:'长标题测试'},
+       	         {id:'7',title:'长标题测试7'},
+       	         {id:'8',title:'长标题测试8'},
+       	         {id:gen.letters(3),title:gen.chinese(5)},
+       	         {id:gen.letters(3),title:gen.chinese(5)},
+       	         {id:gen.letters(3),title:gen.chinese(5)},
+       	         {id:'9',title:'长标题测试9'}]
+       	 });
+       	$scrollTabs.scrolltabs('add',{id:'10',title:'测试增加'});
+         	$('#position').click(function(){
+         	  $scrollTabs.scrolltabs('showActive');
+         	});
+    	});
+    </script>
+  </body>
+</html>

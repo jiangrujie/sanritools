@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <style type="text/css">
+       .page-wrap{
+        width: 840px;
+        height: 400px;
+        background-color: white;
+        position: relative;
+        top: 50px;
+        left: 200px;
+        border: 1px solid red;
+      }
+      
+      .page-wrap .content-tabs{
+        width: 200px;
+        height: 200px;
+        padding: 30px;
+        margin: 20px;
+        overflow: hidden;
+        border: 10px solid #ddd;
+      }
+      
+      .page-wrap .content-tabs .page-tabs{
+        width: 1000000px;
+        height: 100px;
+      }
+      
+      .inner-content-tabs{
+        width: 100%;
+        height: 100%;
+        background-color: #ddd;
+      }
+    </style>
+  </head> 
+  <body >
+    <div class="page-wrap">
+      <div class="content-tabs" id="testWidth">
+        <!-- <div class="page-tabs">
+          
+        </div> -->
+        <div class="inner-content-tabs">
+          
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="../assert/generate.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    	  logger.debugMulti(
+    	      $('#testWidth').width(),
+    	      $('#testWidth').innerWidth(),
+    	      $('#testWidth').outerWidth(),
+    	      $('#testWidth').outerWidth(true));
+    	});
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <link rel="stylesheet" href="jquery.contextMenu.min.css" />
+    <!-- 页面上的导航信息 -->
+    <style type="text/css">
+      .page-wrap{
+        width: 840px;
+        height: 400px;
+        background-color: white;
+        position: relative;
+        top: 50px;
+        left: 200px;
+      }
+      
+    </style>
+  </head> 
+  <body class="full-window">
+    <div class="page-wrap">
+      <ul class="nav-ul">
+        <li><a href="#" >查看邮件</a></li>
+        <li><a href="#" >表单验证</a></li>
+        <li><a href="#" >基本表单</a></li>
+        <li><a href="#" >高级插件</a></li>
+        <li><a href="#" >表单向导</a></li>
+        <li><a href="#" >文件上传</a></li>
+      </ul>
+    </div>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="jquery.ui.position.min.js"></script>
+    <script type="text/javascript" src="jquery.contextMenu.min.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    	  $.contextMenu({
+    	    // define which elements trigger this menu
+    	    selector: ".nav-ul>li",
+    	    // define the elements of the menu
+    	    items: {
+    	        foo: {name: "Foo", callback: function(key, opt){ alert("Foo!"); }},
+    	        bar: {name: "Bar", callback: function(key, opt){ alert("Bar!") }}
+    	    }
+    	    // there's more, have a look at the demos and docs...
+    		});
+    	});
+    </script>
+  </body>
+</html>

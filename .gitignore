@@ -1,0 +1,13 @@
+*.class
+
+
+# myeclipse info
+.myeclipse
+.settings
+.project
+.mymetadata
+.claspath
+velocity.log*
+
+# jar file add other repository
+*.jar

@@ -1,0 +1,22 @@
+Respond.js 是一个快速、轻量的 polyfill，用于为 IE6-8 以及其它不支持 CSS3 Media Queries 的浏览器提供媒体查询的 min-width 和 max-width 特性，实现响应式网页设计（Responsive Web Design）。
+
+Respond.js让IE6-8支持CSS3 Media Query。
+Bootstrap里面就引入了这个js文件，从名字看出来是自适应的兼容。打开IE看了一下，效果挺好的，自适应的效果挺好的。Respond.js让不支持CSS3 Media Query的浏览器包括IE6-IE8等其他浏览器支持查询。
+的css路径取出来放入数组
+2.然后遍历数组一个个发ajax请求
+3.ajax回调后仅分析response中的media query的min-width和max-width语法，分析出viewport变化区间对应相应的css块
+4.页面初始化时和window.resize时，根据当前viewport使用相应的css块。
+使用：考虑到IE9是支持CSS3的，所以直接在HTML页面的head标签中添加脚本引用即可：
+<!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]—>
+ 
+<!--[if lt IE 9]><script src = "http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js" > </script><![endif]—>    
+官方demo地址：http://scottjehl.github.com/Respond/test/test.html 1.在css中正常用 min/max-width media queries
+ 
+@media screen and (min-width: 480px){
+        ...styles for 480px and up go here
+    }
+ 
+@media screen and (min-width: 480px){...styles for 480px and up go here}    
+2.引入respond.min.js，但要在css的后面（越早引入越好，在ie下面看到页面闪屏的概率就越低，因为最初css会先渲染出来，如果respond.js加载得很后面，这时重新根据media query解析出来的css会再改变一次页面的布局等，所以看起来有闪屏的现象）

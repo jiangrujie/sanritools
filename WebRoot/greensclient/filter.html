@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="../assert/normalize-4.11.css" />
+    <link rel="stylesheet" href="../assert/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assert/appbase.css" />
+    <link rel="stylesheet" href="greenfilter.css" />
+    
+  </head> 
+  <body class="full-window">
+    <div class="page-wrap fit">
+      <div class="brand"></div>
+      <div class="search clearfix">
+        <div class="logo">随机选菜器</div>
+        <div class="input-group" id="operator">
+          <input type="text" class="form-control" placeholder="输入菜名来搜索">
+          <span class="input-group-addon search"><i class="fa fa-search"></i> 搜索</span>
+          <span class="input-group-addon random"><i class="fa fa-random"></i> 随机选菜</span>
+          <span class="input-group-addon addFood"><i class="fa fa-plus"></i> 食物</span>
+          <span class="input-group-addon addGreen"><i class="fa fa-plus"></i> 菜</span>
+        </div>
+        <div class="filter-select">所有分类 ></div>
+      </div>
+      <div class="filter" id="filter"></div>
+
+      <!-- 菜列表 -->      
+      <ul class="greens-list clearfix" id="greenList"></ul>
+    </div>
+    <script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
+    
+    <script type="text/javascript" src="../assert/reset.js"></script>
+    <script type="text/javascript" src="../assert/appbase.js"></script>
+    <script type="text/javascript" src="greenfilter.js"></script>
+  </body>
+</html>

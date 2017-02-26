@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jQuery密码强度验证插件</title>
+<link href='progression.css' rel='stylesheet' type='text/css'>
+<link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<br><br><br><br><br><br><br><br>
+<h3 class="demo" id="demo">Demo</h3>
+  <form id="myform">
+    <p>
+      <label>密码强度测试</label>
+      <input type="password" id="myPassword" name="" value="">
+    </p>
+  </form>
+<script type="text/javascript" src="../assert/jquery.1.9.1.min.js"></script>
+<script type="text/javascript" src="strength.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#myPassword').strength();
+	})
+</script>
+</html>

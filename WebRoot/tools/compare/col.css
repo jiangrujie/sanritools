@@ -1,0 +1,68 @@
+.page-wrap{
+  position: relative;
+  overflow: hidden;
+}
+.page-wrap .left-column,
+.page-wrap .right-column,
+.page-wrap .output{
+  position: absolute;
+  top: 0;
+  height: 400px;
+}
+.page-wrap .left-column{
+  width: 400px;
+  left: 0;
+}
+.page-wrap  textarea{
+  width: 100%;
+  height: 100%;
+}
+.page-wrap .right-column {
+  width: 400px;
+  left: 401px;
+}
+.page-wrap .output{
+  min-width: 100px;
+  left: 802px;
+  right: 0;
+}
+.page-wrap .output .left-muti-column,
+.page-wrap .output .right-muti-column,
+.page-wrap .output .equal-column{
+  width: 100%;
+  height: 33.3333%;
+  border: 1px solid #ddd;
+  padding: 2px;
+  position: relative;
+}
+.page-wrap .output .muti-column-introduce{
+  position: absolute;
+  top: 0;
+  line-height: 20px;
+  left: 0;
+  right: 0;
+  background-color: #eee;
+  border-bottom: 1px solid #333;
+}
+.page-wrap .output .muti-content{
+  position: absolute;
+  top: 21px;
+  bottom: 0;
+  overflow-y: scroll;
+  left: 0;
+  right: 0;
+}
+.page-wrap .column-ignore{
+  position: absolute;
+  top: 401px;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+}
+.page-wrap .ignore-operation{
+  position: absolute;
+  top: 401px;
+  left: 401px;
+  right: 0;
+  bottom: 0;
+}

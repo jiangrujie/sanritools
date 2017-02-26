@@ -1,0 +1,116 @@
+.top {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #03a9f4;
+  color: #fff;
+  position: relative;
+  font-size: 15px;
+  font-weight: normal;  
+}
+.top .logo {
+  position: absolute;
+  left: 20px;
+}
+.top .right-element {
+  top:0;
+  right: 0;
+  padding-right: 15px;
+  position: absolute;
+}
+.top .right-element .date{
+  
+}
+.top .right-element .date span{
+  display: inline-block;
+  padding: 0 8px;
+}
+
+.right-element li {
+  float: left;
+  padding: 0 22px;
+}
+.right-element li.user{
+  background: url(../images/index/daouser.png)no-repeat scroll left center;
+}
+
+.right-element li.logout{
+  cursor:pointer;
+  background: url("../images/index/daoexit.png")no-repeat scroll left center;
+}
+.right-element li.logout:HOVER {
+  color: #ddd;
+}
+
+.page-main{
+  float: left;
+}
+.page-main .path{
+  height: 50px;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: #f5f5f5;
+  position: relative;
+}
+.path .path-breadcrumb{
+  position: absolute;
+  left: 20px;
+}
+.path .path-breadcrumb .path-icon{
+  display: inline-block;
+  width: 30px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center left;
+  float: left;
+}
+.path .path-breadcrumb ul{
+  float: left;
+  font-size: 16px;
+  color: #337AB7;
+}
+.path .path-breadcrumb ul li{
+  float: left;
+  font-size: 16px;
+  height: 50px;
+  padding: 0 8px;
+  line-height: 50px;
+}
+
+.path .path-breadcrumb .path-split{
+  background-image: url("../images/index/0right.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.path .right-element{
+  right: 0;
+  padding-right: 20px;
+  position: absolute;
+}
+.path .right-element .search-box{
+  width: 250px;
+  padding: 8px 0;
+  float: right;
+}
+.path .right-element .my-event{
+  float: right;
+  line-height: 50px;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.path .right-element .my-event span:hover{
+  color: #03a9f4;
+}
+.path .right-element .my-event .event_count{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: orange;
+  color: #fff;
+  font: 12px/20px "Microsoft Yahei";
+  transform: translateY(-2px);
+}

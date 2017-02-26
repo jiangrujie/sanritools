@@ -1,0 +1,421 @@
+/*clearfix*/
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+* html .clearfix {
+  zoom: 1;
+} /* IE6 */
+*:first-child+html .clearfix {
+  zoom: 1;
+} /* IE7 */
+/*clearfix*/
+
+/*html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu {
+  display: block;
+}
+
+/*use border-box*/
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; /* Firefox */
+  -webkit-box-sizing: border-box; /* Safari */
+   
+  /**
+  font-size:62.5%;
+    即可此后面布局可依据以下技巧进行设置em单位
+  font-size:1.2em等于font-size:12px
+  font-size:1.4em等于font-size:14px
+  */
+}
+/*css hack for IE*/
+input, textarea, select {
+  *font-size:100%;
+}
+/*设置整个页面的字体 */
+body {
+  /* font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif; */
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+/*所有 input 取消 outline 属性*/
+input {
+  outline: none;
+}
+/* 图片不加边框*/
+img {
+  border: none;
+}
+
+/*列表样式不需要有默认样式*/
+ul,ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*链接默认不需要下划线,默认为 body 样式*/
+a {
+  text-decoration: none;
+  color: #333;
+  border: none;
+}
+a:focus, a:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+/*全局图标宽高*/
+i.fa {
+  width: 16px;
+  height: 16px;
+  padding: 0 3px;
+}
+/*标题不加补白*/
+h1,h2,h3,h4,h5,h6,h7 {
+  margin: 0;
+}
+/*滚动条默认样式,重置浏览器默认样式*/
+::-webkit-scrollbar {
+    width: 6px;
+    height:6px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #999;
+}
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+/*加载中样式,*/
+.body-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom:0;
+  right:0;  
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  display: block;
+  background: #000;
+  z-index:9998;
+}
+.body-mask-msg {
+  position: absolute;
+  top: 50%;
+  font-size: 13px;
+  line-height: 100%;
+  margin-top: -20px;    /*使其居中*/
+  padding: 12px 5px 10px 30px;
+  width: auto;
+  height: 40px;
+  border-width: 2px;
+  border-style: solid;
+  background: #ffffff url('../images/loading.gif') no-repeat scroll 5px center;
+  border-color: #95B8E7;
+  z-index:9999;
+}
+/*文件输入样式,重置浏览器默认样式
+	使用时用 .file 包裹 input[type=file]
+	在 .file 里面加一个span 写入提示文本
+*/
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    cursor: pointer;
+}
+.file input[type=file] {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+
+
+/*默认键值对样式*/
+.form-box {
+  width: 100%;
+  font-size: 14px;
+  color: #888;
+}
+
+.form-box .form-group-inline {
+  display: inline-block;
+}
+/*键值对文本样式*/
+.form-box .form-group-inline .form-text,.form-box .form-group-inline .form-label {
+  vertical-align: middle;
+  line-height: 30px;
+  display: inline-block;
+}
+
+.form-box .form-group-inline .form-label {
+  text-align: right;
+  padding: 0 8px;
+  width: 80px;
+  /*兼容 bootstrap 去掉 bootstrap 默认样式*/
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.form-box .form-group-inline .form-text {
+  width: 120px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.form-box .form-group-inline .form-input {
+  width: 120px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  /*解决 ie 文本框居中问题*/
+  line-height: 20px;
+  _line-height: 21px;
+}
+/* 必填项标记为红色 */
+.form-box .form-group-inline .form-input.require {
+  border-bottom-color: #f00;
+}
+
+/*默认导航样式 */
+.nav-ul {
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-ul li {
+  float: left;
+  margin-bottom: -1px; /*向下延伸一像素,覆盖父 ul 的 border-bottom ,造成只有这个 li 被选中的效果*/
+}
+
+.nav-ul li a {
+  font-size: 14px;
+  color: #555;
+  padding: 0 15px;
+  line-height: 35px;
+  height: 35px;
+  display: block;
+  margin-right: 2px;
+  border-radius: 4px 4px 0 0;
+}
+
+.nav-ul li a:HOVER {
+  background-color: #eee;
+}
+
+.nav-ul li.selected a {
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom: none;
+}
+
+.nav-ul li.selected a:HOVER {
+  cursor: default;
+}
+
+/*默认按扭组样式*/
+.button-group {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #333;
+}
+
+.button-group .btn {
+  padding: 6px 12px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  float: left;
+}
+.button-group .btn+.btn {
+    margin-left: -1px;
+}
+.button-group>.btn:last-child:not(:first-child){
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.button-group>.btn:first-child:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-left: 0;
+}
+
+.button-group .btn:hover,.button-group .btn:focus {
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.button-group .btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+/*默认输入框组*/
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+
+.input-group .input-group-addon {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  color: #555;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.input-group .input-group-addon:first-child {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group .input-group-addon:last-child {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group .form-control {
+  display: table-cell;
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.input-group .form-control:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/*简单键值对表单样式*/
+.simple-form {
+  padding: 15px;
+}
+
+.simple-form .form-row{
+  padding: 2px 0;
+}
+
+.simple-form label.form-label {
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  height: 34px;
+  line-height: 34px;
+}
+
+.simple-form .simple-input {
+  display: inline-block;
+  height: 34px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.simple-form .form-row.has-error .simple-input {
+  border-bottom-color: #f40;
+}
+.simple-form .form-row.has-error .simple-input input{
+  padding-left: 3px;
+}
+.simple-form select {
+  width: 170px;
+}
+/*iframe 样式*/
+iframe {
+  border: none;
+  display: block;
+}
+
+
+/*field set  这个样式暂时还有问题,normalize-4.11.css 加了默认的 padding margin,而且只能嵌套在 div 中,不能用 jquery 动态设置高度*/
+/* fieldset {
+  border: 1px solid #c8d1ce;
+  -moz-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  list-style: none none outside;
+  width: 100%;
+  height: 100%;
+}
+
+fieldset legend {
+  color: #1f4397;
+} */
+textarea{
+  resize: none;
+  outline: none;
+}
+/*当使用 jquery validate 的时候 的错误样式*/
+.help-block {
+  display: inline-block;
+  color: #737373;
+}
+
+.has-error .help-block {
+  color: #a94442;
+}

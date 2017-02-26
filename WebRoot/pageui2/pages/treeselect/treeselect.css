@@ -1,0 +1,62 @@
+.tree-select-panel{
+  width: 400px;
+  height: 500px;
+  position: relative;
+  top: 50px;
+  left: 200px;
+  border: 1px solid #ddd;
+}
+/*toolbar*/
+ .toolbar{
+  background-color: #a4ffff;
+}
+.toolbar li{
+  float: left;
+}
+.toolbar li a{
+  padding: 3px 15px;
+  line-height: 30px;
+}
+
+.tree{
+  color: #333;
+  overflow: scroll;
+  padding: 3px;
+}
+
+.tree .indent{
+  display: inline-block;
+  width: 1.5em;
+}
+.tree li{
+}
+.tree li a.tree-node{
+  display: inline-block;
+  cursor: pointer;
+  width: inherit;
+  width: 100%;
+  position: relative;
+  padding: 8px 0;
+}
+.tree li a.tree-node:hover{
+  background-color: #eee;
+}
+
+.tree li a.tree-node .grid-users{
+  position: absolute;
+  right: 0;
+  display: inline-block;
+}
+.tree li a.tree-node .grid-users b{
+  font-weight: normal;
+  padding: 0 8px;
+  display: inline-block;
+}
+.tree li a.tree-node .grid-users b:hover{
+  background-color: #999;
+  color: #fff;
+  -moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
