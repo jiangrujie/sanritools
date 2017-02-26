@@ -2,9 +2,16 @@ package sanri.utils;
 
 import java.io.File;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * 
+ * 创建时间:2017-2-26上午10:27:01<br/>
+ * 创建者:sanri<br/>
+ * 功能:字符串工具类,弃用,直接使用 StringUtils 代替
+ * <br/>
+ */
+@Deprecated
 public class StringUtil extends StringUtils{
 	/**
 	 * 得到后缀
